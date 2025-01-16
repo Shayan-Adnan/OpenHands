@@ -1,0 +1,196 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins" , sans-serif;
+  }
+
+
+
+body{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(243, 194, 103);
+}
+
+.container{
+   width: 100%;
+   max-width: 650px;
+   background-color: white;
+   padding: 28px;
+   margin: 0 28px;
+   border-radius: 10px;
+   box-shadow: inset -2px 2px 2px white;
+  }
+
+  .container .form .title{
+    position: relative;
+    font-size: 35px;
+    font-weight: 1000;
+    
+  }
+  .form .title::before{
+    content: '';
+    position: absolute;
+    top: 42px;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 30px;
+    background-color: #703734;
+    border-radius: 25px;
+  }
+
+  .col-md-6 {
+    margin-bottom: 40px;
+    justify-content: space-between;
+    
+}
+
+  
+  .input-group input{
+    height: 100%;
+    width: 100%;
+    padding: 0 45px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    border-bottom: 2px solid #ccc;
+    border-top: 2px solid transparent;
+    transition: all 0.2s ease;
+  }
+
+  .input-group input[type=text]:focus {
+    border-bottom-color: #703734;
+  }
+
+  .input-group input[type=password]:focus {
+    border-bottom-color: #703734;
+  }
+ 
+  .input-group input[type=text]:focus + i {
+    color: #703734;
+  }
+
+  .input-group input[type=password]:focus + i {
+    color: #703734;
+  }
+
+  .input-group i{
+    position: relative;
+    top: 50%;
+    left:10px;
+    transform: translateY(-120%);
+    color: #999;
+    font-size: 23px;
+  }
+
+  .invalid-feedback{
+    margin-top: -20px;
+  }
+
+.main-user-info{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+
+/* Country Select Styling*/
+
+
+.input-group select {
+    height: 100%;
+    width: 100%;
+    padding: 0 45px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    font-weight: 200;
+    border-bottom: 1px solid #ccc;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    
+}
+
+.input-group select:focus{
+    border-color:none ;
+    box-shadow: none;
+    border-bottom-color:#703734;
+    
+  }
+
+  .input-group select:focus option {
+    background-color: rgb(243, 194, 103);
+    color: #703734;   
+    
+  }
+  
+ /* City Styling */
+ #USA{
+  visibility:hidden;
+  
+ }
+  
+  #UK{
+    visibility: hidden;
+    margin-top: -71px;
+    
+  }
+ #IND{
+  visibility:hidden;
+  margin-top: -71px;
+ }
+
+ #PAK{
+  visibility:hidden;
+  margin-top: -71px;
+ }
+ 
+
+ /* BUTTON STYLING */
+  .d-grid button{
+  border: none;
+  font-size: 17px;
+  color: #703734;
+  padding: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border-radius: 6px;
+  background-color: #f9c963;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn:hover{
+  background-color:#f8bd3d ;
+}
+
+/* ALREADY HAVE AND ACCOUNT STYLING*/
+.form .text{
+  color: #333;
+  font-size: 14px;
+}
+
+.form a.text{
+  color: #703734;
+  text-decoration: none;
+}
+.form a:hover{
+  text-decoration: underline;
+}
+.form .login-signup{
+  margin-top: 20px;
+  text-align: center;
+  
+}
+
+
+
+

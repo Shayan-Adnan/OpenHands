@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins" , sans-serif;
+  }
+
+body{
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    background-color: rgb(243, 194, 103);
+ }
+
+.container{
+    position:relative;
+    max-width: 430px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container .form{
+    padding: 30px;
+  }
+
+.container .form .title{
+    position: relative;
+    font-size: 27px;
+    font-weight: 600; 
+  }
+
+.form .title::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 30px;
+    background-color: darkorange;
+    border-radius: 25px;
+  }
+
+.form .adminInfo{
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: 30px;
+  }
+
+.form .adminPwd{
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: 30px;
+  }
+
+.adminInfo input{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding: 0 35px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    border-bottom: 2px solid #ccc;
+    border-top: 2px solid transparent;
+    transition: all 0.2s ease;
+  }
+
+.adminPwd input{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding: 0 35px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    border-bottom: 2px solid #ccc;
+    border-top: 2px solid transparent;
+    transition: all 0.2s ease;
+  }
+
+.adminInfo input[type=text]:focus {
+    border-bottom-color:#703734 ;
+  }
+
+.adminPwd input[type=password]:focus {
+    border-bottom-color:#703734 ;
+  }
+
+.adminInfo input[type=password]:focus + i {
+    color: #703734;
+  }
+
+.adminPwd input[type=password]:focus + i {
+    color: #703734;
+  }
+
+.adminInfo input[type=text]:focus + i {
+    color:#703734 ;
+  }
+
+.adminPwd input[type=text]:focus + i {
+    color:#703734 ;
+  }
+
+ .adminInfo i{
+    position: absolute;
+    top: 50%;
+    left:0;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 23px;
+  }
+
+.adminPwd i{
+    position: absolute;
+    top: 50%;
+    left:0;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 23px;
+  }
+
+.form .adminBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form button{
+    margin-top: 35px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 100px;
+    padding-right: 100px;
+    border: none;
+    color: black;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    background-color: #f9c963;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+  }
+
+.form button:hover{
+    background-color:#f8bd3d ;
+    font-weight: bold;
+}

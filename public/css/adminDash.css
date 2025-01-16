@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-brand {
+  color: #703734;
+}
+
+.text-brown {
+  color: #703734;
+}
+
+.nav-link {
+  color: #703734;
+}
+
+.nav-link:hover {
+  color: #b87333;
+}
+
+.btn-danger {
+  background-color: #b87333;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #703734;
+}
+
+.card {
+  border: none;
+}
+
+.list-group-item {
+  border: 1px solid #e3e3e3;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.list-group-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#requestsList {
+  max-height: 800px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+}
