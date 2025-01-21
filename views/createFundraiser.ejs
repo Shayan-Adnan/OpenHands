@@ -46,7 +46,7 @@
     </nav>
 
     <div class="container">
-      <form method="post" enctype="multipart/form-data">
+      <form enctype="multipart/form-data">
         <h2 class="text-center mb-4" style="color: #703734">
           Create a Fundraiser
         </h2>
@@ -58,6 +58,7 @@
           <div class="row">
             <div class="col">
               <input
+                name="firstName"
                 type="text"
                 class="form-control"
                 id="firstNameInput"
@@ -67,6 +68,7 @@
             </div>
             <div class="col">
               <input
+                name="lastName"
                 type="text"
                 class="form-control"
                 id="lastNameInput"
@@ -80,6 +82,7 @@
         <div class="mb-3">
           <label for="emailInput" class="form-label">Email address:</label>
           <input
+            name="email"
             type="email"
             class="form-control"
             id="emailInput"
@@ -93,6 +96,7 @@
             >Provide details of your situation:</label
           >
           <textarea
+            name="details"
             class="form-control"
             id="textareaInput"
             rows="4"
@@ -138,6 +142,7 @@
           <div class="input-group">
             <span class="input-group-text">PKR</span>
             <input
+              name="amountNeeded"
               type="number"
               class="form-control"
               id="currencyInput"
@@ -152,7 +157,13 @@
         <button type="submit" class="btn btn-submit btn-success">
           Send Fundraiser Request
         </button>
+        <div
+          class="alert alert-danger d-none"
+          role="alert"
+          id="errorMessage"
+        ></div>
       </form>
     </div>
+    <script src="./js/createFundraiser.js"></script>
   </body>
 </html>

@@ -3,6 +3,7 @@ const express = require("express");
 const path = require("path");
 const authRoutes = require("./routes/authRoutes");
 const adminAuthRoutes = require("./routes/adminAuthRoutes");
+const fundraiserRoutes = require("./routes/fundraiserRoutes");
 const pageRoutes = require("./routes/pageRoutes");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -17,11 +18,10 @@ app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/adminAuth", adminAuthRoutes);
+app.use("/api/fundraiser/", fundraiserRoutes);
 app.use("/", pageRoutes);
 
 app.set("view engine", "ejs"); //using ejs templating engine
 app.set("views", path.join(__dirname, "../views")); //engine will go into views folder to scan for ejs files
 
 module.exports = app;
-
-//dummy files: index.js index.ejs createfund.ejs index.css createfund.css

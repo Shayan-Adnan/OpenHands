@@ -7,4 +7,8 @@ const generateToken = (user) => {
   });
 };
 
-module.exports = { generateToken };
+const decodeToken = (token) => {
+  return jwt.verify(token, config.JWT_SECRET);
+};
+
+module.exports = { generateToken, decodeToken };

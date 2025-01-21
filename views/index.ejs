@@ -15,11 +15,22 @@
       crossorigin="anonymous"
     ></script>
 
-    <link rel="stylesheet" href="/css/index.css" />
+    <!-- Linking google font Icons -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_forward"
+    />
+
+    <!-- linking SwiperJS CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="./css/index.css" />
 
     <title>Home Page</title>
   </head>
-  <body class="vh-10 overflow-hidden">
+  <body>
     <nav
       class="navbar navbar-expand-lg"
       style="background-color: rgb(243, 194, 103); padding: 20px"
@@ -33,6 +44,7 @@
         >
 
         <!-- Toogle Button -->
+
         <button
           class="navbar-toggler shadow-none border-0"
           type="button"
@@ -64,6 +76,7 @@
           </div>
 
           <!-- SideBar Body -->
+
           <div class="offcanvas-body d-flex flex-column flex-lg-row p-4 p-lg-0">
             <ul
               class="navbar-nav justify-content-center align-items-center fs-5 flex-grow-1 ps-3"
@@ -100,7 +113,7 @@
     <div
       class="d-flex justify-content-center align-items-center"
       style="
-        background-image: url('/images/cover.png');
+        background-image: url('file:///F:/SCD%20FINAL%20PROJECT/imgages/cover.PNG');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -122,6 +135,468 @@
         >
       </div>
     </div>
+    <br />
+    <br />
+    <br />
+
+    <!-- Slider -->
+    <div class="container">
+      <div class="text-container">
+        <h1 class="display-5" style="color: #703734">
+          Discover fundraisers inspired by what you care about
+        </h1>
+      </div>
+    </div>
+
+    <div class="container swiper">
+      <div class="card-wrapper">
+        <div class="card-list swiper-wrapper">
+          <div class="card-item swiper-slide">
+            <a href="#" class="card-link">
+              <img
+                src="imgages/fire.webp"
+                alt="Card Image"
+                class="card-image"
+              />
+              <p class="badge fire">Fire</p>
+              <h2 class="card-title">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit
+              </h2>
+              <button class="card-button material-symbols-outlined">
+                arrow_forward
+              </button>
+            </a>
+          </div>
+
+          <div class="card-item swiper-slide">
+            <a href="#" class="card-link">
+              <img
+                src="imgages/child.webp"
+                alt="Card Image"
+                class="card-image"
+              />
+              <p class="badge child">Child</p>
+              <h2 class="card-title">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit
+              </h2>
+              <button class="card-button material-symbols-outlined">
+                arrow_forward
+              </button>
+            </a>
+          </div>
+
+          <div class="card-item swiper-slide">
+            <a href="#" class="card-link">
+              <img
+                src="imgages/earthquake.webp"
+                alt="Card Image"
+                class="card-image"
+              />
+              <p class="badge earthquake">Earthquake</p>
+              <h2 class="card-title">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit
+              </h2>
+              <button class="card-button material-symbols-outlined">
+                arrow_forward
+              </button>
+            </a>
+          </div>
+
+          <div class="card-item swiper-slide">
+            <a href="#" class="card-link">
+              <img
+                src="imgages/leban.webp"
+                alt="Card Image"
+                class="card-image"
+              />
+              <p class="badge leban">Leban</p>
+              <h2 class="card-title">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit
+              </h2>
+              <button class="card-button material-symbols-outlined">
+                arrow_forward
+              </button>
+            </a>
+          </div>
+
+          <div class="card-item swiper-slide">
+            <a href="#" class="card-link">
+              <img
+                src="imgages/leban.webp"
+                alt="Card Image"
+                class="card-image"
+              />
+              <p class="badge leban">Leban</p>
+              <h2 class="card-title">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit
+              </h2>
+              <button class="card-button material-symbols-outlined">
+                arrow_forward
+              </button>
+            </a>
+          </div>
+        </div>
+
+        <div class="swiper-pagination"></div>
+        <div class="swiper-slide-button swiper-button-prev"></div>
+        <div class="swiper-slide-button swiper-button-next"></div>
+      </div>
+    </div>
+
+    <!-- browse all features -->
+    <div class="container">
+      <div class="text-container">
+        <h1 class="display-6" style="color: #703734">Browse all fundraisers</h1>
+      </div>
+    </div>
+    <br />
+
+    <div class="container">
+      <div class="grid-wrapper">
+        <div class="grid-list">
+          <!-- Card 1 -->
+          <div class="grid-item">
+            <a href="#" class="grid-link">
+              <img
+                src="imgages/fire.webp"
+                alt="grid Image"
+                class="grid-image"
+              />
+              <p class="label fire">Fire</p>
+              <h2 class="grid-title">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit
+              </h2>
+              <button class="grid-button material-symbols-outlined">
+                arrow_forward
+              </button>
+            </a>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="grid-item">
+            <a href="#" class="grid-link">
+              <img
+                src="imgages/child.webp"
+                alt="Card Image"
+                class="grid-image"
+              />
+              <p class="label child">Child</p>
+              <h2 class="grid-title">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit
+              </h2>
+              <button class="grid-button material-symbols-outlined">
+                arrow_forward
+              </button>
+            </a>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="grid-item">
+            <a href="#" class="grid-link">
+              <img
+                src="imgages/earthquake.webp"
+                alt="Card Image"
+                class="grid-image"
+              />
+              <p class="label earthquake">Earthquake</p>
+              <h2 class="grid-title">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit
+              </h2>
+              <button class="grid-button material-symbols-outlined">
+                arrow_forward
+              </button>
+            </a>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="grid-item">
+            <a href="#" class="grid-link">
+              <img
+                src="imgages/leban.webp"
+                alt="Card Image"
+                class="grid-image"
+              />
+              <p class="label leban">Leban</p>
+              <h2 class="grid-title">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit
+              </h2>
+              <button class="grid-button material-symbols-outlined">
+                arrow_forward
+              </button>
+            </a>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="grid-item">
+            <a href="#" class="grid-link">
+              <img
+                src="imgages/leban.webp"
+                alt="Card Image"
+                class="grid-image"
+              />
+              <p class="label leban">Leban</p>
+              <h2 class="grid-title">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit
+              </h2>
+              <button class="grid-button material-symbols-outlined">
+                arrow_forward
+              </button>
+            </a>
+          </div>
+
+          <!-- card 6 -->
+
+          <div class="grid-item">
+            <a href="#" class="grid-link">
+              <img
+                src="imgages/leban.webp"
+                alt="Card Image"
+                class="grid-image"
+              />
+              <p class="label leban">Leban</p>
+              <h2 class="grid-title">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit
+              </h2>
+              <button class="grid-button material-symbols-outlined">
+                arrow_forward
+              </button>
+            </a>
+          </div>
+
+          <!-- card 7 -->
+          <div class="grid-item">
+            <a href="#" class="grid-link">
+              <img
+                src="imgages/leban.webp"
+                alt="Card Image"
+                class="grid-image"
+              />
+              <p class="label leban">Leban</p>
+              <h2 class="grid-title">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit
+              </h2>
+              <button class="grid-button material-symbols-outlined">
+                arrow_forward
+              </button>
+            </a>
+          </div>
+
+          <!-- card 8 -->
+          <div class="grid-item">
+            <a href="#" class="grid-link">
+              <img
+                src="imgages/leban.webp"
+                alt="Card Image"
+                class="grid-image"
+              />
+              <p class="label leban">Leban</p>
+              <h2 class="grid-title">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit
+              </h2>
+              <button class="grid-button material-symbols-outlined">
+                arrow_forward
+              </button>
+            </a>
+          </div>
+          <!-- card 9 -->
+          <div class="grid-item">
+            <a href="#" class="grid-link">
+              <img
+                src="imgages/leban.webp"
+                alt="Card Image"
+                class="grid-image"
+              />
+              <p class="label leban">Leban</p>
+              <h2 class="grid-title">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit
+              </h2>
+              <button class="grid-button material-symbols-outlined">
+                arrow_forward
+              </button>
+            </a>
+          </div>
+
+          <!-- card 10 -->
+
+          <div class="grid-item">
+            <a href="#" class="grid-link">
+              <img
+                src="imgages/leban.webp"
+                alt="Card Image"
+                class="grid-image"
+              />
+              <p class="label leban">Leban</p>
+              <h2 class="grid-title">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit
+              </h2>
+              <button class="grid-button material-symbols-outlined">
+                arrow_forward
+              </button>
+            </a>
+          </div>
+
+          <!-- card  11 -->
+          <div class="grid-item">
+            <a href="#" class="grid-link">
+              <img
+                src="imgages/earthquake.webp"
+                alt="Card Image"
+                class="grid-image"
+              />
+              <p class="label earthquake">Earthquake</p>
+              <h2 class="grid-title">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit
+              </h2>
+              <button class="grid-button material-symbols-outlined">
+                arrow_forward
+              </button>
+            </a>
+          </div>
+
+          <!-- card 12 -->
+
+          <div class="grid-item">
+            <a href="#" class="grid-link">
+              <img
+                src="imgages/earthquake.webp"
+                alt="Card Image"
+                class="grid-image"
+              />
+              <p class="label earthquake">Earthquake</p>
+              <h2 class="grid-title">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit
+              </h2>
+              <button class="grid-button material-symbols-outlined">
+                arrow_forward
+              </button>
+            </a>
+          </div>
+
+          <!-- card 13 -->
+          <div class="grid-item">
+            <a href="#" class="grid-link">
+              <img
+                src="imgages/earthquake.webp"
+                alt="Card Image"
+                class="grid-image"
+              />
+              <p class="label earthquake">Earthquake</p>
+              <h2 class="grid-title">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit
+              </h2>
+              <button class="grid-button material-symbols-outlined">
+                arrow_forward
+              </button>
+            </a>
+          </div>
+
+          <!-- card 14 -->
+          <div class="grid-item">
+            <a href="#" class="grid-link">
+              <img
+                src="imgages/earthquake.webp"
+                alt="Card Image"
+                class="grid-image"
+              />
+              <p class="label earthquake">Earthquake</p>
+              <h2 class="grid-title">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit
+              </h2>
+              <button class="grid-button material-symbols-outlined">
+                arrow_forward
+              </button>
+            </a>
+          </div>
+
+          <!-- card 15 -->
+          <div class="grid-item">
+            <a href="#" class="grid-link">
+              <img
+                src="imgages/earthquake.webp"
+                alt="Card Image"
+                class="grid-image"
+              />
+              <p class="label earthquake">Earthquake</p>
+              <h2 class="grid-title">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit
+              </h2>
+              <button class="grid-button material-symbols-outlined">
+                arrow_forward
+              </button>
+            </a>
+          </div>
+
+          <!-- card 15 -->
+          <div class="grid-item">
+            <a href="#" class="grid-link">
+              <img
+                src="imgages/earthquake.webp"
+                alt="Card Image"
+                class="grid-image"
+              />
+              <p class="label earthquake">Earthquake</p>
+              <h2 class="grid-title">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit
+              </h2>
+              <button class="grid-button material-symbols-outlined">
+                arrow_forward
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- pagination buttons -->
+    <div class="pagination">
+      <button
+        id="prev-btn"
+        class="grid-button material-symbols-outlined pagination-btn backward-btn"
+        disabled
+      >
+        arrow_forward
+      </button>
+      <span id="page-info">Page 1</span>
+      <button
+        id="next-btn"
+        class="grid-button material-symbols-outlined pagination-btn"
+      >
+        arrow_forward
+      </button>
+    </div>
+    <br /><br /><br />
+
+    <!-- box  -->
+
+    <div
+      class="container-fluid flex"
+      style="background-color: bisque; padding: 120px 20px; border-radius: 20px"
+    >
+      <div class="container txt text-left">
+        <h1 class="fs-3 fw-bold mb-4" style="color: #703734">
+          Fundraising on GoFundMe is easy, powerful, and trusted.
+        </h1>
+        <p
+          class="fs-4 mb-3"
+          style="color: rgb(163, 109, 44); font-size: 1rem; line-height: 1.8"
+        >
+          Get what you need to help your fundraiser succeed on GoFundMe, whether
+          you’re raising money for yourself, friends, family, or charity. With
+          no fee to start, GoFundMe is the world’s leading crowdfunding
+          platform—from memorial tributes and funerals to medical emergencies
+          and nonprofits. Whenever you need help, you can ask here.
+        </p>
+        <p class="fs-4 mb-3" style="color: rgb(163, 109, 44)">
+          Still have questions?
+          <a
+            href="#"
+            class="text-decoration-underline"
+            style="color: rgb(163, 109, 44)"
+            >Learn more about how GoFundMe works</a
+          >.
+        </p>
+      </div>
+    </div>
     <script>
       //will have to keep this ejs code here, cant put it in an index.js file
            document.addEventListener("DOMContentLoaded", () => {
@@ -132,6 +607,10 @@
              <% } %>
            });
     </script>
-    <script src="/js/index.js"></script>
+    <!-- Linking SwiperJS Script -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Linking Script -->
+    <script src="./js/index.js"></script>
   </body>
 </html>

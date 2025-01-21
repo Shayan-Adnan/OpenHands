@@ -31,7 +31,7 @@ model PendingRequests {
   firstName String
   lastName String
   email String @unique
-  details Text
+  details String
   imageName String
   documentName String
   amountNeeded Int
