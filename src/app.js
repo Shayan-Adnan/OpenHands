@@ -4,7 +4,6 @@ const path = require("path");
 const authRoutes = require("./routes/authRoutes");
 const adminAuthRoutes = require("./routes/adminAuthRoutes");
 const fundraiserRoutes = require("./routes/fundraiserRoutes");
-//const adminDashboardRoutes = require("./routes/adminDashboardRoutes");
 const pageRoutes = require("./routes/pageRoutes");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -20,7 +19,6 @@ app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/adminAuth", adminAuthRoutes);
 app.use("/api/fundraiser/", fundraiserRoutes);
-//app.use("/api/admin/", adminDashboardRoutes);
 app.use("/", pageRoutes);
 
 app.set("view engine", "ejs"); //using ejs templating engine

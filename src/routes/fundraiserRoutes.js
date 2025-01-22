@@ -14,4 +14,14 @@ router.get(
   fundraiserController.fetchFundraiserRequests
 );
 
+router.post(
+  "/approveFundraiserRequest",
+  fundraiserController.approveFundraiserRequest
+);
+
+router.post(
+  "/rejectFundraiserRequest",
+  fundraiserController.rejectFundraiserRequest
+);
+
 module.exports = router;

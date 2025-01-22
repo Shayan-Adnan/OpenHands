@@ -47,7 +47,9 @@ new Swiper(".card-wrapper", {
 // browse all features pagination javascript
 
 document.addEventListener("DOMContentLoaded", function () {
-  const itemsPerPage = 4; // Number of items per page
+  const rowsPerPage = 3; // Number of rows per page(changes in this line)
+  const itemsPerRow = 4;
+  const itemsPerPage = rowsPerPage * itemsPerRow;
   const gridItems = Array.from(document.querySelectorAll(".grid-item"));
   const totalPages = Math.ceil(gridItems.length / itemsPerPage);
   let currentPage = 1;
@@ -56,7 +58,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const nextBtn = document.getElementById("next-btn");
   const pageInfo = document.getElementById("page-info");
 
-  // Function to render items for the current page
   function renderPage(page) {
     gridItems.forEach((item, index) => {
       if (index >= (page - 1) * itemsPerPage && index < page * itemsPerPage) {
@@ -66,13 +67,12 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    //  pagination controls
     pageInfo.textContent = `Page ${page} of ${totalPages}`;
     prevBtn.disabled = page === 1;
     nextBtn.disabled = page === totalPages;
   }
 
-  // Event listeners for pagination buttons
+  //  pagination buttons
   prevBtn.addEventListener("click", () => {
     if (currentPage > 1) {
       currentPage--;

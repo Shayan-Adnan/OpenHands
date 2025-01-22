@@ -5,7 +5,8 @@ const { decodeToken } = require("../services/generateTokenService");
 
 const createFundraiserRequest = async (req, res) => {
   try {
-    const { firstName, lastName, email, details, amountNeeded } = req.body;
+    const { firstName, lastName, email, title, details, amountNeeded } =
+      req.body;
 
     const imageName = getRelativePath(req.files["image"][0].filename, "image"); //get the relative path where the first file from the image field was stored
     const documentName = getRelativePath(
@@ -20,6 +21,7 @@ const createFundraiserRequest = async (req, res) => {
         firstName,
         lastName,
         email,
+        title,
         details,
         imageName,
         documentName,
@@ -48,4 +50,41 @@ const fetchFundraiserRequests = async (req, res) => {
   }
 };
 
-module.exports = { createFundraiserRequest, fetchFundraiserRequests };
+const approveFundraiserRequest = async (req, res) => {
+  try {
+    const { id } = req.body;
+
+    const fundraiser = await prisma.pendingRequests.findUnique({
+      where: { id },
+    });
+
+    const approvedFundraiser = await prisma.approvedFundraisers.create({
+      data: { fundraiser },
+    });
+
+    res.status(200).json({ success: true });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const rejectFundraiserRequest = async (req, res) => {
+  try {
+    const { id } = req.body;
+
+    const request = await prisma.pendingRequests.delete({
+      where: { id: parseInt(id) },
+    });
+
+    res.status(200).json({ success: true });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+};
+
+module.exports = {
+  createFundraiserRequest,
+  fetchFundraiserRequests,
+  approveFundraiserRequest,
+  rejectFundraiserRequest,
+};

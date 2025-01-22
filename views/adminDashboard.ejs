@@ -23,7 +23,7 @@
       <div class="container">
         <a
           class="navbar-brand fs-4"
-          href="#"
+          href="/"
           style="color: #703734; font-weight: 500"
           >OpenHands</a
         >
@@ -64,6 +64,21 @@
     </nav>
 
     <div class="container my-4">
+      <!-- Confirmation Message -->
+      <div
+        class="alert alert-dismissible fade show d-none"
+        id="confirmationMessage"
+        role="alert"
+      >
+        <span id="confirmationText"></span>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+
       <div class="row">
         <!-- Requests Column -->
         <div class="col-lg-6 mb-4">
@@ -72,7 +87,7 @@
 
         <!-- Request Details Column -->
         <div class="col-lg-6">
-          <div class="card p-3 shadow-sm">
+          <div id="requestDetailsColumn" class="card p-3 shadow-sm">
             <h5 class="card-title fw-bold text-center">Request Details</h5>
             <div class="mb-3">
               <h6 class="fw-bold">Title:</h6>
@@ -106,14 +121,24 @@
               >
             </div>
             <div class="d-grid gap-2">
-              <button class="btn btn-success btn-lg">ACCEPT REQUEST</button>
-              <button class="btn btn-danger btn-lg">REJECT REQUEST</button>
+              <button
+                class="btn btn-success btn-lg accept-btn"
+                data-request-id=""
+              >
+                ACCEPT REQUEST
+              </button>
+              <button
+                class="btn btn-danger btn-lg reject-btn"
+                data-request-id=""
+              >
+                REJECT REQUEST
+              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <script src="./js/adminDashboard.js"></script>
+    <script type="module" src="./js/adminDashboard.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
