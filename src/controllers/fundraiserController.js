@@ -54,6 +54,24 @@ const fetchFundraiserRequests = async (req, res) => {
   }
 };
 
+const fetchApprovedFundraisers = async (req, res) => {
+  try {
+    const approvedFundraisers = await prisma.processedRequests.findMany({
+      where: {
+        status: "Approved",
+      },
+    });
+
+    if (!approvedFundraisers) {
+      res.status(404).json();
+    }
+    res.status(200).json({ success: true, approvedFundraisers });
+  } catch (error) {
+    console.error(error); //for testing
+    res.status(500).json({ message: error.message });
+  }
+};
+
 const approveFundraiserRequest = async (req, res) => {
   try {
     const { id } = req.body;
@@ -180,4 +198,5 @@ module.exports = {
   fetchFundraiserRequests,
   approveFundraiserRequest,
   rejectFundraiserRequest,
+  fetchApprovedFundraisers,
 };

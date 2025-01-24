@@ -1,3 +1,6 @@
+const featuredSlider = document.getElementById("featured-slider");
+const browseAllGrid = document.getElementById("browse-all-grid");
+
 document.getElementById("signin-btn").addEventListener("click", () => {
   window.location.href = "/login";
 });
@@ -91,7 +94,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // text transition
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
+  // frontend
   const container = document.querySelector(".flex");
   const handleScroll = () => {
     const containerPosition = container.getBoundingClientRect();
@@ -105,4 +109,82 @@ document.addEventListener("DOMContentLoaded", function () {
   };
   window.addEventListener("scroll", handleScroll);
   handleScroll();
+
+  //backend
+  await populateSliderAndGrid();
+  //await populateFeaturedFundraiserSlider();
 });
+
+const fetchAllFundraisers = async () => {
+  try {
+    const response = await fetch("/api/fundraiser/fetchApprovedFundraisers");
+
+    const data = await response.json();
+
+    if (data.success) {
+      return data.approvedFundraisers;
+    }
+
+    return [];
+  } catch (error) {
+    console.log("Error fetching approved fundraisers: ", error); //for testing
+  }
+};
+
+const createFundraiserItem = (fundraiser) => {
+  const fundraiserItem = document.createElement("div");
+  fundraiserItem.classList.add("card-item", "swiper-slide");
+  fundraiserItem.innerHTML = `<div class="card-item swiper-slide">
+            <a href="#" class="card-link">
+              <img
+                src="${fundraiser.imageName}"
+                alt="Card Image"
+                class="card-image"
+              />
+              <p class="badge fire">Fire</p>
+              <h2 class="card-title">
+                ${fundraiser.title}
+              </h2>
+              <button class="card-button material-symbols-outlined">
+                arrow_forward
+              </button>
+            </a>
+          </div>`;
+  return fundraiserItem;
+};
+
+const createFundraiserGridItem = (fundraiser) => {
+  const fundraiserGridItem = document.createElement("div");
+  fundraiserGridItem.classList.add("grid-item");
+  fundraiserGridItem.innerHTML = `<div class="grid-item">
+            <a href="#" class="grid-link">
+              <img
+                src="${fundraiser.imageName}"
+                alt="grid Image"
+                class="grid-image"
+              />
+              <p class="label fire">Fire</p>
+              <h2 class="grid-title">
+                ${fundraiser.title}
+              </h2>
+              <button class="grid-button material-symbols-outlined">
+                arrow_forward
+              </button>
+            </a>
+          </div>`;
+  return fundraiserGridItem;
+};
+
+const populateSliderAndGrid = async (event) => {
+  const fundraisers = await fetchAllFundraisers();
+
+  for (let i = 0; i < 10 && i < fundraisers.length; i++) {
+    const fundraiserItem = createFundraiserItem(fundraisers[i]);
+    featuredSlider.appendChild(fundraiserItem);
+  }
+
+  fundraisers.forEach((fundraiser) => {
+    const fundraiserGridItem = createFundraiserGridItem(fundraiser);
+    browseAllGrid.appendChild(fundraiserGridItem);
+  });
+};

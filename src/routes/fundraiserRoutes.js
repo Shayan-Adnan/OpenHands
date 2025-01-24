@@ -24,4 +24,9 @@ router.post(
   fundraiserController.rejectFundraiserRequest
 );
 
+router.get(
+  "/fetchApprovedFundraisers",
+  fundraiserController.fetchApprovedFundraisers
+);
+
 module.exports = router;
