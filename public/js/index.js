@@ -1,3 +1,6 @@
+const featuredSlider = document.getElementById("featured-slider");
+const browseAllGrid = document.getElementById("browse-all-grid");
+
 document.getElementById("signin-btn").addEventListener("click", () => {
   window.location.href = "/login";
 });
@@ -47,7 +50,9 @@ new Swiper(".card-wrapper", {
 // browse all features pagination javascript
 
 document.addEventListener("DOMContentLoaded", function () {
-  const itemsPerPage = 4; // Number of items per page
+  const rowsPerPage = 3; // Number of rows per page(changes in this line)
+  const itemsPerRow = 4;
+  const itemsPerPage = rowsPerPage * itemsPerRow;
   const gridItems = Array.from(document.querySelectorAll(".grid-item"));
   const totalPages = Math.ceil(gridItems.length / itemsPerPage);
   let currentPage = 1;
@@ -56,7 +61,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const nextBtn = document.getElementById("next-btn");
   const pageInfo = document.getElementById("page-info");
 
-  // Function to render items for the current page
   function renderPage(page) {
     gridItems.forEach((item, index) => {
       if (index >= (page - 1) * itemsPerPage && index < page * itemsPerPage) {
@@ -66,13 +70,12 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    //  pagination controls
     pageInfo.textContent = `Page ${page} of ${totalPages}`;
     prevBtn.disabled = page === 1;
     nextBtn.disabled = page === totalPages;
   }
 
-  // Event listeners for pagination buttons
+  //  pagination buttons
   prevBtn.addEventListener("click", () => {
     if (currentPage > 1) {
       currentPage--;
@@ -91,7 +94,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // text transition
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
+  // frontend
   const container = document.querySelector(".flex");
   const handleScroll = () => {
     const containerPosition = container.getBoundingClientRect();
@@ -105,4 +109,82 @@ document.addEventListener("DOMContentLoaded", function () {
   };
   window.addEventListener("scroll", handleScroll);
   handleScroll();
+
+  //backend
+  await populateSliderAndGrid();
+  //await populateFeaturedFundraiserSlider();
 });
+
+const fetchAllFundraisers = async () => {
+  try {
+    const response = await fetch("/api/fundraiser/fetchApprovedFundraisers");
+
+    const data = await response.json();
+
+    if (data.success) {
+      return data.approvedFundraisers;
+    }
+
+    return [];
+  } catch (error) {
+    console.log("Error fetching approved fundraisers: ", error); //for testing
+  }
+};
+
+const createFundraiserItem = (fundraiser) => {
+  const fundraiserItem = document.createElement("div");
+  fundraiserItem.classList.add("card-item", "swiper-slide");
+  fundraiserItem.innerHTML = `<div class="card-item swiper-slide">
+            <a href="#" class="card-link">
+              <img
+                src="${fundraiser.imageName}"
+                alt="Card Image"
+                class="card-image"
+              />
+              <p class="badge fire">Fire</p>
+              <h2 class="card-title">
+                ${fundraiser.title}
+              </h2>
+              <button class="card-button material-symbols-outlined">
+                arrow_forward
+              </button>
+            </a>
+          </div>`;
+  return fundraiserItem;
+};
+
+const createFundraiserGridItem = (fundraiser) => {
+  const fundraiserGridItem = document.createElement("div");
+  fundraiserGridItem.classList.add("grid-item");
+  fundraiserGridItem.innerHTML = `<div class="grid-item">
+            <a href="#" class="grid-link">
+              <img
+                src="${fundraiser.imageName}"
+                alt="grid Image"
+                class="grid-image"
+              />
+              <p class="label fire">Fire</p>
+              <h2 class="grid-title">
+                ${fundraiser.title}
+              </h2>
+              <button class="grid-button material-symbols-outlined">
+                arrow_forward
+              </button>
+            </a>
+          </div>`;
+  return fundraiserGridItem;
+};
+
+const populateSliderAndGrid = async (event) => {
+  const fundraisers = await fetchAllFundraisers();
+
+  for (let i = 0; i < 10 && i < fundraisers.length; i++) {
+    const fundraiserItem = createFundraiserItem(fundraisers[i]);
+    featuredSlider.appendChild(fundraiserItem);
+  }
+
+  fundraisers.forEach((fundraiser) => {
+    const fundraiserGridItem = createFundraiserGridItem(fundraiser);
+    browseAllGrid.appendChild(fundraiserGridItem);
+  });
+};

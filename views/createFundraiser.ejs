@@ -28,7 +28,7 @@
   <body>
     <nav class="navbar navbar-expand-lg">
       <div class="container">
-        <a class="navbar-brand" href="#">OpenHands</a>
+        <a class="navbar-brand" href="/">OpenHands</a>
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
@@ -92,6 +92,19 @@
         </div>
 
         <div class="mb-3">
+          <label for="emailInput" class="form-label"
+            >Title of Fundraiser:</label
+          >
+          <input
+            name="title"
+            type="text"
+            class="form-control"
+            id="titleInput"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
           <label for="textareaInput" class="form-label"
             >Provide details of your situation:</label
           >
@@ -115,7 +128,6 @@
             type="file"
             id="imageInput"
             accept="image/png, image/jpeg"
-            multiple
             required
           />
         </div>
@@ -130,7 +142,6 @@
             type="file"
             id="fileInput"
             accept="application/pdf"
-            multiple
             required
           />
         </div>

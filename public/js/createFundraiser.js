@@ -10,7 +10,7 @@ const submitRequest = async (e) => {
 
     if (!response.ok) {
       const errorData = await response.json();
-      throw new Error(errorData.error || "An error occurred during login");
+      throw new Error(errorData.error || "An error occurred.");
     }
 
     alert("created successfully"); //for testing

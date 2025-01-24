@@ -158,11 +158,11 @@ body {
   align-items: center;
 }
 
+/* changes in this list */
 .grid-list {
-  display: flex;
-  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  width: 100%;
 }
 
 .grid-item {
