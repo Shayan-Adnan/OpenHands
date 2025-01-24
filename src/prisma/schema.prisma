@@ -24,13 +24,14 @@ model User {
   city String
   accCreatedAt DateTime @default(now())
   pendingRequests PendingRequests[]
+  processedRequests ProcessedRequests[]
 }
 
 model PendingRequests {
   id Int @id @default(autoincrement())
   firstName String
   lastName String
-  email String @unique
+  email String
   title String
   details String
   imageName String
@@ -39,6 +40,27 @@ model PendingRequests {
   requestCreatedAt DateTime @default(now())
   user User @relation(fields: [userId], references: [id])
   userId Int
+}
+
+model ProcessedRequests {
+  id Int @id @default(autoincrement())
+  firstName String
+  lastName String
+  email String
+  title String
+  details String
+  imageName String
+  documentName String
+  amountNeeded Int
+  status Status
+  processedAt DateTime @default(now())
+  user User @relation(fields: [userId], references: [id])
+  userId Int
+}
+
+enum Status {
+  Approved
+  Rejected
 }
 
 model Admin {

@@ -63,6 +63,32 @@ const displayRequestDetails = (request) => {
   document.querySelector(".reject-btn").dataset.requestId = request.id;
 };
 
+const approveRequest = async (event) => {
+  const id = event.target.dataset.requestId;
+  try {
+    const response = await fetch("/api/fundraiser/approveFundraiserRequest", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      showConfirmationMessage("Request approved successfully!", "danger");
+      loadRequestList(); //reload the list after rejecting a request
+      resetRequestDetails(); //reset the req details section
+    }
+  } catch (error) {
+    console.error(error); // for testing
+    showConfirmationMessage("An error occurred!", "danger");
+  }
+};
+
 const rejectRequest = async (event) => {
   const id = event.target.dataset.requestId;
   try {
@@ -85,6 +111,7 @@ const rejectRequest = async (event) => {
     }
   } catch (error) {
     console.error(error); // for testing
+    showConfirmationMessage("An error occurred!", "danger");
   }
 };
 
@@ -118,4 +145,5 @@ const showConfirmationMessage = (message, type) => {
 
 document.addEventListener("DOMContentLoaded", loadRequestList);
 
+document.querySelector(".accept-btn").addEventListener("click", approveRequest);
 document.querySelector(".reject-btn").addEventListener("click", rejectRequest);
