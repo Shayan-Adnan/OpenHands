@@ -40,7 +40,14 @@
           class="navbar-brand fs-4"
           href="#"
           style="color: #703734; font-weight: 600"
-          >OpenHands</a
+        >
+          <img
+            src="/images/logo.jpg"
+            class="navbar-logo"
+            alt="Logo"
+            style="width: 50px; height: auto; object-fit: contain"
+          />
+          OpenHands</a
         >
 
         <!-- Toggle Button -->
@@ -98,6 +105,12 @@
               <a id="signin-btn" class="sign-in px-3 fs-5 hidden">Sign in</a>
               <a id="view-profile-btn" class="sign-in px-3 fs-5 hidden"
                 >View Profile</a
+              >
+              <a
+                href="/adminDashboard"
+                id="view-admin-dashboard-btn"
+                class="sign-in px-3 fs-5 hidden"
+                >View Admin Dashboard</a
               >
               <a
                 id="create-fundraiser-btn"
@@ -260,9 +273,15 @@
     <script>
       //will have to keep this ejs code here, cant put it in an index.js file
            document.addEventListener("DOMContentLoaded", () => {
-             <% if (user) { %>
+             <% if (user && !isAdmin) { %>
                document.getElementById("view-profile-btn").classList.remove("hidden");
-             <% } else { %>
+             <%
+             }
+             else if (user && isAdmin) { %>
+              document.getElementById("view-admin-dashboard-btn").classList.remove("hidden");
+              <%
+             }
+              else { %>
                document.getElementById("signin-btn").classList.remove("hidden");
              <% } %>
            });

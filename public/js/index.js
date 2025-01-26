@@ -112,7 +112,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   //backend
   await populateSliderAndGrid();
-  //await populateFeaturedFundraiserSlider();
 });
 
 const fetchAllFundraisers = async () => {
@@ -134,14 +133,18 @@ const fetchAllFundraisers = async () => {
 const createFundraiserItem = (fundraiser) => {
   const fundraiserItem = document.createElement("div");
   fundraiserItem.classList.add("card-item", "swiper-slide");
-  fundraiserItem.innerHTML = `<div class="card-item swiper-slide">
+  fundraiserItem.innerHTML = `<div class="card-item swiper-slide" data-id="${
+    fundraiser.id
+  }">
             <a href="#" class="card-link">
               <img
                 src="${fundraiser.imageName}"
                 alt="Card Image"
                 class="card-image"
               />
-              <p class="badge fire">Fire</p>
+              <p class="badge fire">Goal: ${fundraiser.amountNeeded.toLocaleString(
+                "en-US"
+              )} PKR</p>
               <h2 class="card-title">
                 ${fundraiser.title}
               </h2>
@@ -150,20 +153,27 @@ const createFundraiserItem = (fundraiser) => {
               </button>
             </a>
           </div>`;
+  fundraiserItem.addEventListener("click", async (event) => {
+    window.location.href = `/fundraisers/${fundraiser.id}`;
+  });
   return fundraiserItem;
 };
 
 const createFundraiserGridItem = (fundraiser) => {
   const fundraiserGridItem = document.createElement("div");
   fundraiserGridItem.classList.add("grid-item");
-  fundraiserGridItem.innerHTML = `<div class="grid-item">
+  fundraiserGridItem.innerHTML = `<div class="grid-item" data-id="${
+    fundraiser.id
+  }">
             <a href="#" class="grid-link">
               <img
                 src="${fundraiser.imageName}"
                 alt="grid Image"
                 class="grid-image"
               />
-              <p class="label fire">Fire</p>
+              <p class="label fire">Goal: ${fundraiser.amountNeeded.toLocaleString(
+                "en-US"
+              )} PKR</p>
               <h2 class="grid-title">
                 ${fundraiser.title}
               </h2>
@@ -172,12 +182,16 @@ const createFundraiserGridItem = (fundraiser) => {
               </button>
             </a>
           </div>`;
+
+  fundraiserGridItem.addEventListener("click", async (event) => {
+    window.location.href = `/fundraisers/${fundraiser.id}`;
+  });
   return fundraiserGridItem;
 };
 
 const populateSliderAndGrid = async (event) => {
   const fundraisers = await fetchAllFundraisers();
-
+  //putting only first 10 fundraisers in the slider
   for (let i = 0; i < 10 && i < fundraisers.length; i++) {
     const fundraiserItem = createFundraiserItem(fundraisers[i]);
     featuredSlider.appendChild(fundraiserItem);

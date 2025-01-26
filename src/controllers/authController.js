@@ -3,7 +3,6 @@ const authService = require("../services/authService");
 const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
-    //console.log("Received data:", { email, password });
     const { user, token } = await authService.loginUser(email, password);
 
     res.cookie("jwt", token, {

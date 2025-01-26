@@ -1,14 +1,10 @@
-const { PrismaClient } = require("@prisma/client");
 const { generateToken } = require("./generateTokenService");
 const { checkPassword } = require("./checkPasswordService");
-
-const prisma = new PrismaClient();
+const adminModel = require("../models/adminModel");
 
 const loginAdmin = async (email, password) => {
   try {
-    const admin = await prisma.admin.findUnique({
-      where: { email },
-    });
+    const admin = await adminModel.findAdmin(email);
 
     if (!admin) {
       const error = new Error("User not found.");
@@ -33,10 +29,8 @@ const loginAdmin = async (email, password) => {
   }
 };
 
-const checkIfUserIsAdmin = async (user) => {
-  const admin = await prisma.admin.findUnique({
-    where: { id: user.userId },
-  });
+const checkIfUserIsAdmin = async (id) => {
+  const admin = await adminModel.checkIfAdmin(id);
 
   if (admin) {
     return true;

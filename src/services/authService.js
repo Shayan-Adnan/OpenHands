@@ -1,15 +1,11 @@
 const bcrypt = require("bcrypt");
-const { PrismaClient } = require("@prisma/client");
 const { generateToken } = require("./generateTokenService");
 const { checkPassword } = require("./checkPasswordService");
-
-const prisma = new PrismaClient();
+const userModel = require("../models/userModel");
 
 const loginUser = async (email, password) => {
   try {
-    const user = await prisma.user.findUnique({
-      where: { email },
-    });
+    const user = await userModel.findUser(email);
 
     if (!user) {
       const error = new Error("User not found.");
@@ -44,12 +40,8 @@ const signUpUser = async (
   city
 ) => {
   try {
-    //console.log(firstName, lastName, username, email, password, country, city);
-
-    //checking if user exists - tried to make this a separate function to share it between login and signup but that didnt work
-    const user = await prisma.user.findUnique({
-      where: { email },
-    });
+    //checking if user exists
+    const user = await userModel.findUser(email);
 
     if (user) {
       const error = new Error(
@@ -61,17 +53,15 @@ const signUpUser = async (
 
     const hashedPassword = await bcrypt.hash(password, 10); //encrypting password
 
-    const newUser = await prisma.user.create({
-      data: {
-        firstName,
-        lastName,
-        username,
-        email,
-        password: hashedPassword,
-        country,
-        city,
-      },
-    });
+    const newUser = await userModel.createUser(
+      firstName,
+      lastName,
+      username,
+      email,
+      hashedPassword,
+      country,
+      city
+    );
   } catch (error) {
     console.error("Error in prisma query: ", error);
     throw error;

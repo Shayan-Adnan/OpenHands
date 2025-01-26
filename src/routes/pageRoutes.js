@@ -1,12 +1,12 @@
 const express = require("express");
 const path = require("path");
 const { checkAuthorization } = require("../middleware/authMiddleware");
-const { checkIfUserIsAdmin } = require("../services/adminAuthService");
+//const { checkIfUserIsAdmin } = require("../services/adminAuthService");
 
 const router = express.Router();
 
 router.get("/", checkAuthorization, (req, res) => {
-  res.render("index", { user: req.user }); //sending user data to homepage to display data accordingly
+  res.render("index", { user: req.user, isAdmin: req.isAdmin }); //sending user data to homepage to display data accordingly
 });
 
 router.get("/login", checkAuthorization, (req, res) => {
@@ -34,13 +34,10 @@ router.get("/adminlogin", checkAuthorization, (req, res) => {
 });
 
 router.get("/adminDashboard", checkAuthorization, async (req, res) => {
-  if (req.user) {
-    const isAdmin = await checkIfUserIsAdmin(req.user); //if a user is logged in but is not an admin, this prevents them from accessing the admin dashboard
-    if (isAdmin) {
-      res.render("adminDashboard");
-    } else {
-      res.redirect("/");
-    }
+  if (req.user && req.isAdmin) {
+    res.render("adminDashboard");
+  } else if (req.user && !req.isAdmin) {
+    res.redirect("/"); //if a user is logged in but is not an admin, this prevents them from accessing the admin dashboard
   } else {
     res.redirect("adminLogin");
   }
@@ -55,5 +52,13 @@ router.get(
     res.render("createFundraiser");
   }
 );
+
+router.get("/fundraisers/:id", checkAuthorization, (req, res) => {
+  res.render("fundraiserPage", { user: req.user, isAdmin: req.isAdmin });
+});
+
+router.get("*", (req, res) => {
+  res.redirect("/"); // Redirect to the index page
+});
 
 module.exports = router;
