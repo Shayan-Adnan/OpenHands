@@ -29,4 +29,6 @@ router.get(
   fundraiserController.fetchApprovedFundraisers
 );
 
+router.get("/fetchFundraiser/:id", fundraiserController.fetchFundraiser);
+
 module.exports = router;

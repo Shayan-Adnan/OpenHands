@@ -3,7 +3,6 @@ const authService = require("../services/authService");
 const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
-    //console.log("Received data:", { email, password });
     const { user, token } = await authService.loginUser(email, password);
 
     res.cookie("jwt", token, {
@@ -37,4 +36,13 @@ const signUpUser = async (req, res) => {
   }
 };
 
-module.exports = { loginUser, signUpUser };
+const logout = async (req, res) => {
+  try {
+    res.clearCookie("jwt");
+    res.status(200).json({ success: true });
+  } catch (error) {
+    res.status(500).json({ success: false, error });
+  }
+};
+
+module.exports = { loginUser, signUpUser, logout };

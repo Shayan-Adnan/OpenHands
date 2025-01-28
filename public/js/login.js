@@ -12,7 +12,6 @@ const handleLogin = async (event) => {
 
   let timeoutID;
 
-  // http://127.0.0.1:3000/api/auth/login
   try {
     const response = await fetch("/api/auth/login", {
       method: "POST",

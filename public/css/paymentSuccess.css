@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(243, 194, 103);
+  background: url("/images/backgroundImage.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.container {
+  position: relative;
+  max-width: 430px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container .box {
+  padding: 30px;
+}
+
+.container .box .title {
+  position: relative;
+  font-size: 27px;
+  font-weight: 600;
+}
+
+.box .title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  background-color: greenyellow;
+  border-radius: 25px;
+}
+
+.box .successMark {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.successMark i {
+  color: greenyellow;
+  border-radius: 100%;
+  background-color: white;
+  left: 50%;
+  transform: translateY(-50%);
+  font-size: 40px;
+}
+
+.box .backBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box button {
+  margin-top: 35px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 100px;
+  padding-right: 100px;
+  border: none;
+  color: black;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  background-color: #f9c963;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+}
+
+.box button:hover {
+  background-color: #f8bd3d;
+  font-weight: bold;
+}

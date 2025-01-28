@@ -1,0 +1,527 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Nav Bar CSS */
+
+.offcanvas-header {
+  border-bottom: 2px solid #703734;
+  font-weight: 500;
+  color: #703734;
+}
+
+.nav-link {
+  color: #946131;
+  font-weight: 500;
+}
+.nav-link:hover {
+  color: #b87333;
+}
+
+.btn {
+  background-color: #946131;
+  outline: 1px solid #703734;
+}
+.btn:hover {
+  outline: 1px solid #703734;
+  background-color: #b87333;
+}
+.sign-in {
+  text-decoration: none;
+  color: #703734;
+}
+.sign-in:hover {
+  color: #b87333;
+}
+
+@media (max-width: 991px) {
+  .sidebar {
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+  }
+}
+
+/* -x-x-x-x--x-x-x- */
+/* content css */
+
+.heading {
+  padding-bottom: 10px;
+}
+
+.image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  max-width: 850px;
+  height: 50vh;
+  border-radius: 10px;
+  border: 2px solid silver;
+}
+
+.goal-container {
+  background-color: rgb(243, 194, 103);
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 30px;
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+}
+
+.icons .logo {
+  width: 80px; /* Set the desired size for the logo */
+  margin-top: 10px;
+  height: auto;
+  border-radius: 50%; /* Optional: Makes the logo circular if it's square */
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 800;
+  color: Black;
+  margin: 0 0 10px;
+}
+.goal-amount {
+  font-size: 24px;
+  margin: 10px 10px 25px;
+  color: rgb(111, 110, 110);
+  font-weight: bold;
+}
+.button {
+  background-color: #a96526c7;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 15px;
+  cursor: pointer;
+  margin: 10px 0;
+  width: 100%;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+.button:hover {
+  background-image: linear-gradient(#ab6b30, #ba6a1f);
+}
+.button i {
+  margin-right: 8px;
+}
+
+/* content css */
+
+.organizer {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid silver;
+}
+
+.organizer i {
+  color: silver;
+  font-size: 20px;
+  padding: 5px;
+  border: 1px solid silver;
+  border-radius: 50%;
+}
+
+.fs-6 {
+  margin: 3px;
+}
+
+.shield {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  border-bottom: 1px solid silver;
+}
+.shield .shieldbutton {
+  font-size: 12px;
+  color: rgb(2, 56, 2);
+  border-radius: 70px;
+  background-color: rgb(79, 220, 79);
+  border: 3px solid green;
+}
+
+.shield .shieldbutton i {
+  margin-right: 8px;
+}
+
+/* paragraph css */
+.text-content {
+  max-height: 7.5em;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.text-content.expanded {
+  max-height: none;
+}
+
+.show-more-btn {
+  display: flex;
+  cursor: pointer;
+  color: black;
+  border: none;
+  padding-bottom: 10px;
+}
+
+@media (max-width: 991px) {
+  .goal-container {
+    box-shadow: none;
+    text-align: start;
+
+    padding: 20px;
+    margin-top: 10px;
+  }
+  .goal-amount {
+    margin-left: 0;
+  }
+}
+
+/* goal container */
+
+/* Styling for the goal-container */
+.goal-container {
+  background: linear-gradient(145deg, #fef9f2, #f4e1c9);
+  border: 2px solid #dcb27c;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.goal-container:hover {
+  transform: translateY(-5px);
+}
+
+/* Header Styling (Goal + Amount on the Same Line) */
+.goal-header {
+  font-size: 1.95rem;
+  font-weight: bold;
+  color: #703734;
+  justify-content: center;
+  align-items: center; /* Ensures perfect vertical alignment */
+  gap: 5px;
+  line-height: 1; /* Prevents extra spacing between lines */
+}
+
+.goal-title {
+  color: #703734; /* Darker text for "Goal:" */
+}
+
+.goal-amount {
+  font-size: 2.25rem;
+  color: #d38748; /* Distinct color for the amount */
+}
+
+.goal-divider {
+  height: 2px;
+  background-color: #dcb27c;
+  margin: 10px 0 20px;
+}
+
+/* Buttons */
+.goal-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.goal-button {
+  background-color: #f5d7a1;
+  color: #703734;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.goal-button:hover {
+  background-color: #f2c68b;
+}
+
+.download-button i,
+.donate-button i {
+  margin-right: 8px;
+}
+
+/* browse all features css */
+.card-wrapper {
+  max-width: 1100px;
+  margin: 0 60px 35px;
+  padding: 20px 10px;
+  overflow: -moz-hidden-unscrollable;
+}
+
+.card-list .card-item {
+  list-style: none;
+}
+
+.card-list .card-item .card-link {
+  user-select: none;
+  display: block;
+
+  padding: 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  border: 2px solid transparent;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.05);
+  transition: 0.2s ease;
+}
+.card-list .card-item .card-link:active {
+  cursor: grabbing;
+}
+.card-list .card-item .card-link:hover {
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
+  transform: scale(1.1);
+  transition: 0.6s;
+  background-color: rgb(252, 215, 170);
+}
+
+.card-list .card-link .card-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.card-list .card-link .badge {
+  font-weight: 400;
+  padding: 8px 16px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin: 16px 0 18px;
+  background: #b87333;
+  width: fit-content;
+  border-radius: 50px;
+}
+
+.card-list .card-link .card-title {
+  font-size: 1.19rem;
+  color: #000;
+  font-weight: 600;
+}
+
+.card-list .card-link .card-button {
+  height: 35px;
+  width: 35px;
+  color: #b87333;
+  border-radius: 50%;
+  margin: 30px 0 5px;
+  background: none;
+  cursor: pointer;
+  border: 1px solid #b87333;
+  transform: rotate(-45deg);
+  transition: 0.4s ease;
+}
+
+.card-list .card-link:hover .card-button {
+  color: #fff;
+  background: #703734;
+}
+
+.card-wrapper .swiper-pagination-bullet {
+  height: 13px;
+  width: 13px;
+  opacity: 0.5;
+  background: #703734;
+}
+.card-wrapper .swiper-pagination-bullet:active {
+  opacity: 1;
+}
+
+.card-wrapper .swiper-slide-button {
+  color: #703734;
+}
+
+@media screen and (max-width: 768px) {
+  .card-wrapper {
+    margin: 0 10px 25px;
+  }
+
+  .card-wrapper .swiper-slide-button {
+    display: none;
+  }
+}
+
+/* Donation Protection CSS */
+
+.modal-content {
+  background-color: white;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  border-radius: 5px;
+}
+
+.guarantee-list {
+  margin-top: 20px;
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+.modal {
+  display: none;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+}
+
+.close-modal-btn {
+  color: #aaa;
+  float: right;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-modal-btn:hover,
+.close-modal-btn:focus {
+  color: #703734;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-content {
+  max-width: 600px;
+  height: 40vh;
+  border-radius: 30px;
+}
+
+.modal-content i {
+  margin-right: 8px;
+}
+
+@media screen and (max-width: 768px) {
+  .modal-content {
+    width: 100%;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+/* Donation Modal Styles */
+.donation-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.donation-modal-content {
+  background-color: #fff;
+  width: 90%;
+  max-width: 500px;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  text-align: center;
+}
+
+.donation-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+}
+
+.donation-modal-close:hover {
+  color: #703734;
+}
+
+.donation-modal-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #703734;
+}
+
+.donation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.donation-form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.donation-form-label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #703734;
+  margin-bottom: 5px;
+}
+
+.donation-form-input,
+.donation-form-textarea {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #dcb27c;
+  border-radius: 5px;
+  outline: none;
+}
+
+.donation-form-input:focus,
+.donation-form-textarea:focus {
+  border-color: #b87333;
+}
+
+.donation-form-textarea {
+  resize: none;
+  height: 100px;
+}
+
+.donation-form-submit {
+  background-color: #703734;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.donation-form-submit:hover {
+  background-color: #b87333;
+}
+
+/* Display the modal when visible */
+.donation-modal.show {
+  display: flex;
+}

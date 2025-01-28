@@ -1,11 +1,10 @@
-const { PrismaClient } = require("@prisma/client");
 const { getRelativePath } = require("../middleware/multerConfig");
 const { transporter, createMail } = require("../services/nodemailerService");
+const { decodeToken } = require("../services/generateTokenService");
 const config = require("../config/config");
 const path = require("path");
 const fs = require("fs");
-const prisma = new PrismaClient();
-const { decodeToken } = require("../services/generateTokenService");
+const fundraiserModel = require("../models/fundraiserModel");
 
 const createFundraiserRequest = async (req, res) => {
   try {
@@ -20,19 +19,17 @@ const createFundraiserRequest = async (req, res) => {
 
     const userId = decodeToken(req.cookies.jwt).userId; //getting user id from jwt
 
-    const pendingRequest = await prisma.pendingRequests.create({
-      data: {
-        firstName,
-        lastName,
-        email,
-        title,
-        details,
-        imageName,
-        documentName,
-        amountNeeded: parseInt(req.body.amountNeeded),
-        userId,
-      },
-    });
+    const pendingRequest = await fundraiserModel.createFundraiserRequest(
+      firstName,
+      lastName,
+      email,
+      title,
+      details,
+      imageName,
+      documentName,
+      amountNeeded,
+      userId
+    );
 
     res.status(201).json();
   } catch (error) {
@@ -43,7 +40,8 @@ const createFundraiserRequest = async (req, res) => {
 
 const fetchFundraiserRequests = async (req, res) => {
   try {
-    const pendingRequests = await prisma.pendingRequests.findMany();
+    const pendingRequests = await fundraiserModel.getFundraiserRequests();
+
     if (!pendingRequests) {
       res.status(404).json();
     }
@@ -56,11 +54,7 @@ const fetchFundraiserRequests = async (req, res) => {
 
 const fetchApprovedFundraisers = async (req, res) => {
   try {
-    const approvedFundraisers = await prisma.processedRequests.findMany({
-      where: {
-        status: "Approved",
-      },
-    });
+    const approvedFundraisers = await fundraiserModel.getApprovedFundraisers();
 
     if (!approvedFundraisers) {
       res.status(404).json();
@@ -75,10 +69,7 @@ const fetchApprovedFundraisers = async (req, res) => {
 const approveFundraiserRequest = async (req, res) => {
   try {
     const { id } = req.body;
-
-    const request = await prisma.pendingRequests.findUnique({
-      where: { id: parseInt(id) },
-    });
+    const request = await fundraiserModel.getFundraiserRequest(id);
 
     if (!request) {
       return res.status(404).json({ message: "Request not found." });
@@ -87,18 +78,10 @@ const approveFundraiserRequest = async (req, res) => {
     const { pendingRequestId, requestCreatedAt, ...processedRequestData } =
       request; //removing the requestcreatedAt field as that does not exist in the processedreq table and also removing id to avoid duplication
 
-    const processedRequest = await prisma.processedRequests.create({
-      //adding to processedreq table
-      data: {
-        ...processedRequestData,
-        status: "Approved",
-      },
-    });
-
-    await prisma.pendingRequests.delete({
-      //deleting from pendingreq table as it's been processed
-      where: { id: parseInt(id) },
-    });
+    const processedRequest = await fundraiserModel.approveFundraiser(
+      processedRequestData,
+      id
+    );
 
     transporter.sendMail(
       //send an email to the user
@@ -120,9 +103,8 @@ const approveFundraiserRequest = async (req, res) => {
 const rejectFundraiserRequest = async (req, res) => {
   try {
     const { id } = req.body;
-    const request = await prisma.pendingRequests.findUnique({
-      where: { id: parseInt(id) },
-    });
+
+    const request = await fundraiserModel.getFundraiserRequest(id);
 
     if (!request) {
       return res.status(404).json({ message: "Request not found" });
@@ -136,20 +118,12 @@ const rejectFundraiserRequest = async (req, res) => {
       ...processedRequestData
     } = request; //removing the requestcreatedAt field as that does not exist in the processedreq table
 
-    const processedRequest = await prisma.processedRequests.create({
-      //adding to processedreq table
-      data: {
-        ...processedRequestData,
-        imageName,
-        documentName,
-        status: "Rejected",
-      },
-    });
-
-    await prisma.pendingRequests.delete({
-      //deleting from pendingreq table as it's been processed
-      where: { id: parseInt(id) },
-    });
+    const processedRequest = await fundraiserModel.rejectFundraiser(
+      processedRequestData,
+      imageName,
+      documentName,
+      id
+    );
 
     const imagePath = path.join(__dirname, "..", "..", "public", imageName); // construct image path
     const documentPath = path.join(
@@ -193,10 +167,30 @@ const rejectFundraiserRequest = async (req, res) => {
   }
 };
 
+const fetchFundraiser = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const fundraiser = await fundraiserModel.getFundraiser(id);
+
+    if (!fundraiser) {
+      res
+        .status(404)
+        .json({ success: false, message: "404: Fundraiser Not Found!" });
+    }
+
+    res.status(200).json({ success: true, fundraiser });
+  } catch (error) {
+    console.error("Error occured while fetching fundraiser: ", error);
+    res.status(500).json({ error });
+  }
+};
+
 module.exports = {
   createFundraiserRequest,
   fetchFundraiserRequests,
   approveFundraiserRequest,
   rejectFundraiserRequest,
   fetchApprovedFundraisers,
+  fetchFundraiser,
 };

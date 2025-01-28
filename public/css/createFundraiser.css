@@ -87,3 +87,32 @@ textarea:focus {
   color: red;
   font-weight: bold;
 }
+
+.success-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh; /* Vertically center the message */
+}
+
+.alert-success {
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  color: #155724;
+}
+
+.alert-success h2 {
+  font-family: "Roboto", sans-serif;
+}
+
+.alert-success p {
+  font-family: "Arial", sans-serif;
+}
+
+.shadow {
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.rounded-3 {
+  border-radius: 1rem;
+}

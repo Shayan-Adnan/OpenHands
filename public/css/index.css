@@ -27,6 +27,11 @@ body {
 .nav-link:hover {
   color: #b87333;
 }
+.navbar-logo {
+  max-height: 100%; /* Ensures it fits within the navbar's height */
+  display: inline-block; /* Keeps it inline with the text */
+  vertical-align: middle; /* Aligns it properly with the text */
+}
 
 .btn {
   background-color: #946131;
@@ -37,6 +42,26 @@ body {
   outline: 1px solid #703734;
   background-color: #b87333;
 }
+/* Improved Button Styles */
+.create-fundraiser-btn {
+  background-color: #946131;
+  border: 2px solid #703734;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 50px;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.create-fundraiser-btn:hover {
+  background-color: #b87333;
+  border-color: #946131;
+  color: #fff;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
 .sign-in {
   text-decoration: none;
   color: #703734;
@@ -92,7 +117,7 @@ body {
   font-size: 0.95rem;
   font-weight: 500;
   margin: 16px 0 18px;
-  background: #b87333;
+  background: #63b941;
   width: fit-content;
   border-radius: 50px;
 }
@@ -206,7 +231,7 @@ body {
   font-size: 0.95rem;
   font-weight: 500;
   margin: 16px 0 18px;
-  background: #b87333;
+  background: #63b941;
   width: fit-content;
   border-radius: 50px;
 }

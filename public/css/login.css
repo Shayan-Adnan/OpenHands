@@ -1,23 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
 
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins" , sans-serif;
-  }
-
-
-
-body{
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(243, 194, 103);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
-.container{
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(243, 194, 103);
+  background: url("/images/backgroundImage.png") no-repeat center center fixed;
+  background-size: cover;
+}
+.container {
   position: relative;
   max-width: 430px;
   width: 100%;
@@ -26,19 +25,16 @@ body{
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
-.container .form{
+.container .form {
   padding: 30px;
-
 }
-.container .form .title{
+.container .form .title {
   position: relative;
   font-size: 27px;
   font-weight: 600;
-  
-  
 }
-.form .title::before{
-  content: '';
+.form .title::before {
+  content: "";
   position: absolute;
   left: 0;
   bottom: 0;
@@ -48,17 +44,14 @@ body{
   border-radius: 25px;
 }
 
-
-.form .input-field{
+.form .input-field {
   position: relative;
   height: 50px;
   width: 100%;
   margin-top: 30px;
-
-
 }
 
-.input-field input{
+.input-field input {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -71,63 +64,59 @@ body{
   transition: all 0.2s ease;
 }
 
-.input-field input[type=text]:focus {
-  border-bottom-color:#703734 ;
+.input-field input[type="text"]:focus {
+  border-bottom-color: #703734;
 }
-.input-field input[type=password]:focus + i {
+.input-field input[type="password"]:focus + i {
   color: #703734;
 }
-.input-field input[type=text]:focus + i {
-  color:#703734 ;
+.input-field input[type="text"]:focus + i {
+  color: #703734;
 }
 
-
-
-
-.input-field i{
+.input-field i {
   position: absolute;
   top: 50%;
-  left:0;
+  left: 0;
   transform: translateY(-50%);
   color: #999;
   font-size: 23px;
 }
 
-.form .checkbox-text{
-  
+.form .checkbox-text {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: 20px;
 }
 
-.checkbox-text .checkbox-content{
+.checkbox-text .checkbox-content {
   display: flex;
   align-items: center;
 }
-.checkbox-content input{
+.checkbox-content input {
   margin: 0 8px -2px 4px;
-  accent-color:#703734;
+  accent-color: #703734;
 }
 
-.form .text{
+.form .text {
   color: #333;
   font-size: 14px;
 }
 
-.form a.text{
+.form a.text {
   color: #703734;
   text-decoration: none;
 }
-.form a:hover{
+.form a:hover {
   text-decoration: underline;
 }
 
-.form .button{
+.form .button {
   margin-top: 35px;
 }
 
-.form .button input{
+.form .button input {
   border: none;
   color: #fff;
   font-size: 17px;
@@ -139,33 +128,33 @@ body{
   transition: all 0.3s ease;
 }
 
-.button input:hover{
-  background-color:#f8bd3d ;
+.button input:hover {
+  background-color: #f8bd3d;
 }
 
-.form .icons img{
-  position: relative;
-  left: 80px;
-  padding: 5px;
-  cursor: pointer;
-  
+.icons {
+  display: flex;
+  justify-content: center;
 }
 
-.form .login-signup{
+.icons .logo {
+  width: 80px; /* Set the desired size for the logo */
+  height: auto;
+  border-radius: 50%; /* Optional: Makes the logo circular if it's square */
+}
+
+.form .login-signup {
   margin-top: 20px;
   text-align: center;
-  
 }
-.input-field.button input[type="submit"]{
+.input-field.button input[type="submit"] {
   color: #703734;
   font-weight: 600;
 }
 
-
-
 /* sign Up form */
 
-.form .input-box{
+.form .input-box {
   border-bottom: 2px solid #ccc;
   border-top: 2px solid transparent;
   border: none;
