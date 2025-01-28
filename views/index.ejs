@@ -26,7 +26,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
-    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="/css/index.css" />
 
     <title>Home Page</title>
   </head>
@@ -92,10 +92,10 @@
                 <a class="nav-link" href="#">Home</a>
               </li>
               <li class="nav-item mx-2">
-                <a class="nav-link" href="#about">About</a>
+                <a class="nav-link" href="/aboutUs">About</a>
               </li>
               <li class="nav-item mx-2">
-                <a class="nav-link" href="#contact">Contact</a>
+                <a class="nav-link" href="/contactUs">Contact</a>
               </li>
             </ul>
             <!-- Login Signup -->
@@ -117,6 +117,9 @@
                 class="text-white text-decoration-none px-4 py-1 btn btn rounded-4"
                 >Create a Fundraiser</a
               >
+              <a href="" id="logout" class="log-out px-3 fs-5 hidden">
+                <i class="fa-solid fa-power-off" style="color: #703734"></i>
+              </a>
             </div>
           </div>
         </div>
@@ -136,16 +139,19 @@
     >
       <div class="text-container">
         <h1 class="display-4" style="color: #703734; margin-top: -180px">
-          OpenHands Donations
+          Welcome to OpenHands
         </h1>
-        <h1 class="display-4" style="color: #703734">Website</h1>
+        <h1 class="display-7" style="color: #e2ab15">
+          Give and Get with Open Hands
+        </h1>
 
         <a
-          href="#CreateaFundraiser"
-          class="text-white text-decoration-none px-1 py-2 btn btn rounded-4"
+          href="/createFundraiser"
+          class="text-white text-decoration-none px-4 py-2 btn create-fundraiser-btn rounded-pill shadow"
           style="margin-top: 20px"
-          >Create a Fundraiser</a
         >
+          Create a Fundraiser
+        </a>
       </div>
     </div>
     <br />
@@ -247,7 +253,7 @@
     >
       <div class="container txt text-left">
         <h1 class="fs-3 fw-bold mb-4" style="color: #703734">
-          Fundraising on GoFundMe is easy, powerful, and trusted.
+          Fundraising on OpenHands is easy, powerful, and trusted.
         </h1>
         <p
           class="fs-4 mb-3"
@@ -255,14 +261,14 @@
         >
           Get what you need to help your fundraiser succeed on OpenHands,
           whether you’re raising money for yourself, friends, family, or
-          charity. With no fee to start, GoFundMe is the world’s leading
+          charity. With no fee to start, OpenHands is the world’s leading
           crowdfunding platform—from memorial tributes and funerals to medical
           emergencies and nonprofits. Whenever you need help, you can ask here.
         </p>
         <p class="fs-4 mb-3" style="color: rgb(163, 109, 44)">
           Still have questions?
           <a
-            href="#"
+            href="/aboutUs"
             class="text-decoration-underline"
             style="color: rgb(163, 109, 44)"
             >Learn more about how OpenHands works</a
@@ -275,10 +281,12 @@
            document.addEventListener("DOMContentLoaded", () => {
              <% if (user && !isAdmin) { %>
                document.getElementById("view-profile-btn").classList.remove("hidden");
+               document.getElementById('logout').classList.remove('hidden');
              <%
              }
              else if (user && isAdmin) { %>
               document.getElementById("view-admin-dashboard-btn").classList.remove("hidden");
+              document.getElementById('logout').classList.remove('hidden');
               <%
              }
               else { %>
@@ -286,10 +294,15 @@
              <% } %>
            });
     </script>
+    <script>
+      //footer
+      <%- include('./partials/footer.ejs') %>
+    </script>
     <!-- Linking SwiperJS Script -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <!-- Linking Script -->
-    <script src="./js/index.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="/js/global.js"></script>
   </body>
 </html>

@@ -1,3 +1,5 @@
+const container = document.getElementById("container");
+const errorMessageElement = document.getElementById("error-message");
 const handleSignUp = async (event) => {
   event.preventDefault();
 
@@ -8,9 +10,6 @@ const handleSignUp = async (event) => {
   const password = document.getElementById("password").value.trim();
   const country = document.getElementById("country").value.trim();
   const city = document.getElementById("city").value.trim();
-  const container = document.getElementById("container");
-
-  const errorMessageElement = document.getElementById("error-message");
 
   try {
     const response = await fetch("/api/auth/signup", {
@@ -35,52 +34,16 @@ const handleSignUp = async (event) => {
     }
 
     // signup success message
-    const successMessage = document.createElement("div");
-    successMessage.className = "success-message";
-    successMessage.innerHTML = `<h2>🎉 Sign Up Successful! 🎉</h2> <p>Welcome, <strong>${firstName} ${lastName}!</strong></p><p id="countdown">Redirecting you to the homepage in 4...</p>`;
-
-    // clear existing content and show the message
-    container.innerHTML = "";
-    container.appendChild(successMessage);
+    displaySuccessMessage(firstName, lastName);
 
     //automatically logging in the user after sign up
-    const login = await fetch("/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    });
+    await login(email, password);
 
     //counting down to redirection
-    let countdown = 4;
-    const countDownElement = document.getElementById("countdown");
-    const countdownInterval = setInterval(() => {
-      countdown -= 1;
-      if (countdown > 0) {
-        countDownElement.textContent = `Redirecting you to the homepage in ${countdown}...`;
-      } else {
-        clearInterval(countdownInterval);
-        window.location.href = "/";
-      }
-    }, 1000);
+    countdown();
   } catch (error) {
     console.error("Error during signup:", error);
-    if (error.message === "An account is already registered with this email.") {
-      errorMessageElement.textContent = error.message;
-
-      setTimeout(() => {
-        errorMessageElement.textContent = "";
-      }, 3000);
-    } else {
-      errorMessageElement.textContent = "An error occurred! Please try again.";
-      setTimeout(() => {
-        errorMessageElement.textContent = "";
-      }, 3000);
-    }
+    displayErrorMessage(error);
   }
 };
 
@@ -106,5 +69,58 @@ function changeStatus() {
     });
   }
 }
+
+const displaySuccessMessage = (firstName, lastName) => {
+  // signup success message
+  const successMessage = document.createElement("div");
+  successMessage.className = "success-message";
+  successMessage.innerHTML = `<h2>🎉 Sign Up Successful! 🎉</h2> <p>Welcome, <strong>${firstName} ${lastName}!</strong></p><p id="countdown">Redirecting you to the homepage in 4...</p>`;
+
+  // clear existing content and show the message
+  container.innerHTML = "";
+  container.appendChild(successMessage);
+};
+
+const login = async (email, password) => {
+  const login = await fetch("/api/auth/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email,
+      password,
+    }),
+  });
+};
+
+const countdown = async () => {
+  let countdown = 4;
+  const countDownElement = document.getElementById("countdown");
+  const countdownInterval = setInterval(() => {
+    countdown -= 1;
+    if (countdown > 0) {
+      countDownElement.textContent = `Redirecting you to the homepage in ${countdown}...`;
+    } else {
+      clearInterval(countdownInterval);
+      window.location.href = "/";
+    }
+  }, 1000);
+};
+
+const displayErrorMessage = (error) => {
+  if (error.message === "An account is already registered with this email.") {
+    errorMessageElement.textContent = error.message;
+
+    setTimeout(() => {
+      errorMessageElement.textContent = "";
+    }, 3000);
+  } else {
+    errorMessageElement.textContent = "An error occurred! Please try again.";
+    setTimeout(() => {
+      errorMessageElement.textContent = "";
+    }, 3000);
+  }
+};
 
 document.getElementById("signup-form").addEventListener("submit", handleSignUp);

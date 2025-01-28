@@ -52,7 +52,6 @@ const getFundraiserRequest = async (id) => {
 };
 
 const approveFundraiser = async (processedRequestData, id) => {
-  console.log(processedRequestData);
   const processedRequest = await prisma.processedRequests.create({
     data: {
       ...processedRequestData,

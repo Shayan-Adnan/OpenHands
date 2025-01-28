@@ -57,7 +57,7 @@
       </div>
     </nav>
 
-    <div class="container">
+    <div id="container" class="container">
       <form enctype="multipart/form-data">
         <h2 class="text-center mb-4" style="color: #703734">
           Create a Fundraiser
@@ -187,6 +187,10 @@
         ></div>
       </form>
     </div>
-    <script src="./js/createFundraiser.js"></script>
+    <script>
+      //footer
+      <%- include('./partials/footer.ejs') %>
+    </script>
+    <script src="/js/createFundraiser.js"></script>
   </body>
 </html>

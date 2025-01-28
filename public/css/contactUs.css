@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* NavbBar Css */
+@media (max-width: 991px) {
+  .sidebar {
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+  }
+}
+
+.offcanvas-header {
+  border-bottom: 2px solid #703734;
+  font-weight: 500;
+  color: #703734;
+}
+
+.nav-link {
+  color: #946131;
+  font-weight: 500;
+}
+.nav-link:hover {
+  color: #b87333;
+}
+
+.btn {
+  background-color: #946131;
+  outline: 1px solid #703734;
+  transition: all 0.5s ease;
+}
+.btn:hover {
+  outline: 1px solid #703734;
+  background-color: #b87333;
+}
+.sign-in {
+  text-decoration: none;
+  color: #703734;
+}
+.sign-in:hover {
+  color: #b87333;
+}
+
+/* box css */
+
+.content {
+  align-items: center;
+  padding-bottom: 50px;
+}
+
+.card {
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+}
+.card-header {
+  background-color: #b87333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+.card-img-top {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin: 20px auto;
+  display: block;
+}
+.card-body {
+  text-align: center;
+}
+.card-text {
+  color: #555;
+  font-size: 1rem;
+}
+
+.icons a i {
+  color: #000;
+  text-decoration: none;
+  font-size: 15px;
+  margin: 0 5px;
+}
+
+@media screen and (max-width: 991px) {
+  .card {
+    display: block;
+    margin-top: 30px;
+  }
+}
+
+.hidden {
+  display: none;
+}

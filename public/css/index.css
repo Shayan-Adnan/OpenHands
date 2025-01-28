@@ -42,6 +42,26 @@ body {
   outline: 1px solid #703734;
   background-color: #b87333;
 }
+/* Improved Button Styles */
+.create-fundraiser-btn {
+  background-color: #946131;
+  border: 2px solid #703734;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 50px;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.create-fundraiser-btn:hover {
+  background-color: #b87333;
+  border-color: #946131;
+  color: #fff;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
 .sign-in {
   text-decoration: none;
   color: #703734;

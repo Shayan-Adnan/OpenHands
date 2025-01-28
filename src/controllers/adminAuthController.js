@@ -15,5 +15,4 @@ const loginAdmin = async (req, res) => {
     res.status(error.statusCode || 500).json({ error: error.message });
   }
 };
-
 module.exports = { loginAdmin };

@@ -57,6 +57,22 @@ router.get("/fundraisers/:id", checkAuthorization, (req, res) => {
   res.render("fundraiserPage", { user: req.user, isAdmin: req.isAdmin });
 });
 
+router.get("/aboutUs", checkAuthorization, (req, res) => {
+  res.render("aboutUs", { user: req.user, isAdmin: req.isAdmin });
+});
+
+router.get("/contactUs", checkAuthorization, (req, res) => {
+  res.render("contactUs", { user: req.user, isAdmin: req.isAdmin });
+});
+
+router.get("/paymentSuccess", (req, res) => {
+  res.render("paymentSuccess");
+});
+
+router.get("/paymentCancel", (req, res) => {
+  res.render("paymentCancel");
+});
+
 router.get("*", (req, res) => {
   res.redirect("/"); // Redirect to the index page
 });
