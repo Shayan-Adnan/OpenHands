@@ -24,6 +24,6 @@ app.use("/api/payment/", paymentRoutes);
 app.use("/", pageRoutes);
 
 app.set("view engine", "ejs"); //using ejs templating engine
-app.set("views", path.join(__dirname, "../views")); //engine will go into views folder to scan for ejs files
+app.set("views", path.join(__dirname, "/views")); //engine will go into views folder to scan for ejs files
 
 module.exports = app;

@@ -64,7 +64,20 @@ body {
   max-width: 800px; /* Restricts the width of the content */
   padding-bottom: 40px;
 }
+.text-container1 {
+  margin-bottom: 20px; /* Adds spacing between the title and the paragraph */
+}
 
+.text-container2 {
+  height: 50vh;
+  line-height: 1.8; /* Increases spacing between lines of text for readability */
+  font-size: 1.1rem; /* Adjusts font size for better readability */
+  color: #703734; /* Keeps the brown color */
+  padding: 10px 20px; /* Adds padding around the text */
+  background-color: #fdf4e3; /* Optional: light background color to differentiate the section */
+  border-radius: 8px; /* Optional: softens the edges of the background */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for better focus */
+}
 .navbar-logo {
   max-height: 100%; /* Ensures it fits within the navbar's height */
   display: inline-block; /* Keeps it inline with the text */
