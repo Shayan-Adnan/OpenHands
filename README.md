@@ -1,3 +1,1 @@
-A fundraiser platform inspired by GoFundMe. 
-
-Currently Work in Progress, expected to be completed by 25th Jan, 2025.
+A fundraiser platform inspired by GoFundMe, built using Node, Express, MySql, and Bootstrap.
