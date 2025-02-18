@@ -14,7 +14,7 @@ body {
   flex-direction: column;
 }
 
-/* NavbBar Css */
+/* Navbar */
 @media (max-width: 991px) {
   .sidebar {
     background-color: rgba(255, 255, 255, 0.15);
@@ -42,9 +42,47 @@ body {
   transition: all 0.5s ease;
 }
 .btn:hover {
-  outline: 1px solid #703734;
   background-color: #b87333;
 }
+
+/* Responsive Content */
+.content {
+  align-items: center;
+  font-weight: bolder;
+  text-align: center;
+  flex: 1;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 80%; /* Ensures it scales */
+  padding-bottom: 40px;
+}
+
+.text-container1 {
+  margin-bottom: 20px;
+}
+
+.text-container2 {
+  line-height: 1.8;
+  font-size: 1.1rem;
+  color: #703734;
+  padding: 10px 20px;
+  background-color: #fdf4e3;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+}
+
+.navbar-logo {
+  max-height: 100%;
+  max-width: 50px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.hidden {
+  display: none;
+}
+
 .sign-in {
   text-decoration: none;
   color: #703734;
@@ -53,37 +91,14 @@ body {
   color: #b87333;
 }
 
-/* content CSS */
-.content {
-  align-items: center;
-  font-weight: bolder;
-  text-align: start;
-  flex: 1;
-  padding: 20px; /* Adds padding to prevent content touching the edges */
-  margin: 0 auto; /* Centers the content horizontally */
-  max-width: 800px; /* Restricts the width of the content */
-  padding-bottom: 40px;
-}
-.text-container1 {
-  margin-bottom: 20px; /* Adds spacing between the title and the paragraph */
-}
+/* Make text stack on small screens */
+@media (max-width: 768px) {
+  .text-container1 h1 {
+    font-size: 1.8rem;
+  }
 
-.text-container2 {
-  height: 50vh;
-  line-height: 1.8; /* Increases spacing between lines of text for readability */
-  font-size: 1.1rem; /* Adjusts font size for better readability */
-  color: #703734; /* Keeps the brown color */
-  padding: 10px 20px; /* Adds padding around the text */
-  background-color: #fdf4e3; /* Optional: light background color to differentiate the section */
-  border-radius: 8px; /* Optional: softens the edges of the background */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for better focus */
-}
-.navbar-logo {
-  max-height: 100%; /* Ensures it fits within the navbar's height */
-  display: inline-block; /* Keeps it inline with the text */
-  vertical-align: middle; /* Aligns it properly with the text */
-}
-
-.hidden {
-  display: none;
+  .text-container2 {
+    font-size: 1rem;
+    padding: 15px;
+  }
 }

@@ -49,7 +49,9 @@ new Swiper(".card-wrapper", {
 
 // browse all features pagination javascript
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
+  await populateSliderAndGrid();
+
   const rowsPerPage = 3; // Number of rows per page(changes in this line)
   const itemsPerRow = 4;
   const itemsPerPage = rowsPerPage * itemsPerRow;
@@ -109,9 +111,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   };
   window.addEventListener("scroll", handleScroll);
   handleScroll();
-
-  //backend
-  await populateSliderAndGrid();
 });
 
 const fetchAllFundraisers = async () => {
@@ -162,30 +161,27 @@ const createFundraiserItem = (fundraiser) => {
 const createFundraiserGridItem = (fundraiser) => {
   const fundraiserGridItem = document.createElement("div");
   fundraiserGridItem.classList.add("grid-item");
-  fundraiserGridItem.innerHTML = `<div class="grid-item" data-id="${
-    fundraiser.id
-  }">
-            <a href="#" class="grid-link">
-              <img
-                src="${fundraiser.imageName}"
-                alt="grid Image"
-                class="grid-image"
-              />
-              <p class="label fire">Goal: ${fundraiser.amountNeeded.toLocaleString(
-                "en-US"
-              )} PKR</p>
-              <h2 class="grid-title">
-                ${fundraiser.title}
-              </h2>
-              <button class="grid-button material-symbols-outlined">
-                arrow_forward
-              </button>
-            </a>
-          </div>`;
+  fundraiserGridItem.setAttribute("data-id", fundraiser.id);
+
+  fundraiserGridItem.innerHTML = `
+    <a href="#" class="grid-link">
+      <img
+        src="${fundraiser.imageName}"
+        alt="grid Image"
+        class="grid-image"
+      />
+      <p class="label fire">Goal: ${fundraiser.amountNeeded.toLocaleString(
+        "en-US"
+      )} PKR</p>
+      <h2 class="grid-title">${fundraiser.title}</h2>
+      <button class="grid-button material-symbols-outlined">arrow_forward</button>
+    </a>
+  `;
 
   fundraiserGridItem.addEventListener("click", async (event) => {
     window.location.href = `/fundraisers/${fundraiser.id}`;
   });
+
   return fundraiserGridItem;
 };
 
