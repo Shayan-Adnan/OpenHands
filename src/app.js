@@ -11,7 +11,6 @@ const cookieParser = require("cookie-parser");
 
 const app = express();
 
-//app.use(express.json()); - wasnt working for some reason so used bodyparser instead
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "../public"))); //using express to serve static files (html, css)
 //app.use(cors()); //enables communication between diff ports

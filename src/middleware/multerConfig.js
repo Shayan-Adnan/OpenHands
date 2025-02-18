@@ -1,16 +1,33 @@
+const fs = require("fs");
 const multer = require("multer");
 const path = require("path");
 
-const imagesBasePath = "public/fundraiserImages";
-const documentsBasePath = "public/fundraiserDocuments";
+const imagesBasePath = path.join(__dirname, "../../public/fundraiserImages");
+const documentsBasePath = path.join(
+  __dirname,
+  "../../public/fundraiserDocuments"
+);
+
+const ensureDirectoryExists = (dir) => {
+  console.log("hello");
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+};
 
 //Multer storage configuration
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     if (file.fieldname == "image") {
-      cb(null, path.join(__dirname, `../../${imagesBasePath}`));
+      // ensure folder actually exists before trying to upload files
+      ensureDirectoryExists(imagesBasePath);
+
+      cb(null, imagesBasePath);
     } else if (file.fieldname == "document") {
-      cb(null, path.join(__dirname, `../../${documentsBasePath}`));
+      // ensure folder actually exists before trying to upload files
+      ensureDirectoryExists(documentsBasePath);
+
+      cb(null, documentsBasePath);
     }
   },
   filename: (req, file, cb) => {

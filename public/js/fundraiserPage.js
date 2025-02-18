@@ -227,7 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     donationAmount = document.getElementById("donation-amount").value;
 
-    if (donationAmount < 100) {
+    if (donationAmount < 150) {
       alert("Minimum accepted donation amount is 150 PKR.");
     } else {
       loadCheckoutPage(donationAmount);

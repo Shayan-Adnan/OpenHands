@@ -31,7 +31,7 @@ const displaySuccessMessage = () => {
       <p style="font-size: 18px;">Your fundraiser request has been sent successfully and will now undergo the validation process.</p>
       <p style="font-size: 16px;">We'll email you once it has been validated.</p>
       <p id="countdown" class="mt-3 fw-bold" style="font-size: 16px; color: #155724;">
-        Redirecting you to the homepage in <span id="redirectTimer">4</span>...
+        Redirecting you to the homepage in <span id="redirectTimer">6</span>...
       </p>
     </div>
   `;
@@ -57,7 +57,7 @@ const displayErrorMessage = () => {
 };
 
 const countdown = async () => {
-  let countdown = 4;
+  let countdown = 6;
   const countDownElement = document.getElementById("countdown");
   const countdownInterval = setInterval(() => {
     countdown -= 1;
