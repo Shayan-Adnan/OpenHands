@@ -1,5 +1,7 @@
 OpenHands is a fundraiser platform inspired by GoFundMe, built using Node, Express, MySQL, and Bootstrap.
 
+![screenshot1](https://github.com/user-attachments/assets/72a3f3a5-fe2b-4a76-8a80-d6db316db391)
+
 ## 🚀 Features
 - User authentication (JWT-based)
 - Fundraiser creation and approval system
@@ -80,3 +82,33 @@ Enter the following command in your terminal to run the app:
 npm run devStart
 ```
 Now you can open your browser and go to http://localhost:PORT to see the app in action 😃.
+
+## 📷 Screenshots
+
+**Login Page**
+
+![image](https://github.com/user-attachments/assets/dc571b5f-60cb-43e4-993a-845661dd8d63)
+
+**Landing Page**
+
+![screenshot1](https://github.com/user-attachments/assets/72a3f3a5-fe2b-4a76-8a80-d6db316db391)
+
+![image](https://github.com/user-attachments/assets/848c5b07-2e24-41b7-bfe0-f637d24cd07a)
+
+**Create Fundraiser Page**
+
+![image](https://github.com/user-attachments/assets/6ec3637a-347b-48d4-8a5f-02c42a5fc898)
+
+**Fundraiser Page**
+
+![image](https://github.com/user-attachments/assets/33526d64-eefb-45f3-b101-d8cef0e95ea4)
+
+**Stripe Payment Page**
+
+![image](https://github.com/user-attachments/assets/f01c980a-757f-4226-b290-7d0c8b6b5c32)
+
+**Admin Dashboard**
+
+![image](https://github.com/user-attachments/assets/161afbd4-b300-4ad8-ab07-33e7ecb29311)
+
+
