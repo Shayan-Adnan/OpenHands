@@ -145,11 +145,11 @@ The SMS is sent using **Twilio’s Node.js SDK**.
 
   ![Donation Page](./screenshots/donation-page.png)
 
-- **Message Sent (Backend Status)**
+- **SMS Confirmation (Received on Phone)**
 
   ![Message Sent](./screenshots/sms-message-sent.jpg)
 
-- **SMS Confirmation (Received on Phone)**
+- **Message Sent (Backend Status)**
 
   ![SMS Confirmation](./screenshots/sms-confirmation.png)
 
