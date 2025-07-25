@@ -101,7 +101,7 @@ VALUES (
   'Doe',
   'Pakistan',
   'Karachi',
-  'john@gmail.com',
+  'maazkhan9711@gmail.com',
   '$2b$10$p9rfuCY/jXgl321mZvRj0ONxdN8Muq.L0wKMDiQUXohJ3bGRhezC2',
   'JohnDoe'
 );
