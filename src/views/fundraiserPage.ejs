@@ -297,80 +297,97 @@
         </div>
       </div>
     </div>
-
-    <!-- Donation Form Modal -->
+<!-- Donation Form Modal -->
     <div class="donation-modal hidden">
       <div class="donation-modal-content">
         <button class="donation-modal-close">&times;</button>
         <h2 class="donation-modal-title">Make a Donation</h2>
         <form class="donation-form">
           <div class="donation-form-group">
-            <label for="donor-name" class="donation-form-label"
-              >Your Name</label
-            >
-            <input
-              type="text"
-              id="donor-name"
-              class="donation-form-input"
-              placeholder="Enter your name"
-              required
-            />
+            <label for="donor-name" class="donation-form-label">Your Name</label>
+            <input type="text" id="donor-name" name="donorName" class="donation-form-input" placeholder="Enter your name" required />
           </div>
+
           <div class="donation-form-group">
-            <label for="donation-amount" class="donation-form-label"
-              >Donation Amount</label
-            >
-            <input
-              type="number"
-              id="donation-amount"
-              class="donation-form-input"
-              placeholder="Enter amount in PKR"
-              required
-            />
+            <label for="donation-amount" class="donation-form-label">Donation Amount</label>
+            <input type="number" id="donation-amount" name="amount" class="donation-form-input" placeholder="Enter amount in PKR" required min="1" />
           </div>
+
           <div class="donation-form-group">
-            <label for="message" class="donation-form-label"
-              >Message (Optional)</label
-            >
-            <textarea
-              id="message"
-              class="donation-form-textarea"
-              placeholder="Leave a message"
-            ></textarea>
+            <label for="message" class="donation-form-label">Message (Optional)</label>
+            <textarea id="message" name="message" class="donation-form-textarea" placeholder="Leave a message"></textarea>
           </div>
-          <button
-            id="confirm-donation-btn"
-            type="submit"
-            class="donation-form-submit"
-          >
-            Donate
-          </button>
+
+          <div class="donation-form-group">
+            <label for="phone" class="donation-form-label">Phone Number (for SMS)</label>
+            <input type="text" id="phone" name="phone" class="donation-form-input" placeholder="+923XXXXXXXXX" required />
+          </div>
+
+          <button type="submit" class="donation-form-submit">Donate</button>
         </form>
       </div>
     </div>
 
-    <script>
-      // will have to keep this ejs code here, cant put it in an index.js file
-           document.addEventListener("DOMContentLoaded", () => {
-             <% if (user && !isAdmin) { %>
-               document.getElementById("view-profile-btn").classList.remove("hidden");
-               document.getElementById('logout').classList.remove('hidden');
-             <%
-             }
-             else if (user && isAdmin) { %>
-              document.getElementById("view-admin-dashboard-btn").classList.remove("hidden");
-              document.getElementById('logout').classList.remove('hidden');
-              <%
-             }
-              else { %>
-               document.getElementById("signin-btn").classList.remove("hidden");
-             <% } %>
-           });
-    </script>
-    <script>
-      //footer
-      <%- include('./partials/footer.ejs') %>
-    </script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    <% if (user && !isAdmin) { %>
+      document.getElementById("view-profile-btn").classList.remove("hidden");
+      document.getElementById("logout").classList.remove("hidden");
+    <% } else if (user && isAdmin) { %>
+      document.getElementById("view-admin-dashboard-btn").classList.remove("hidden");
+      document.getElementById("logout").classList.remove("hidden");
+    <% } else { %>
+      document.getElementById("signin-btn").classList.remove("hidden");
+    <% } %>
+  });
+
+  document.querySelector(".donation-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const donorName = document.getElementById("donor-name").value.trim();
+    const amount = document.getElementById("donation-amount").value.trim();
+    const message = document.getElementById("message").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+
+    // ✅ Input validations
+    const phoneRegex = /^\+923\d{9}$/;
+    if (!phoneRegex.test(phone)) {
+      return alert("Phone number must be in +923XXXXXXXXX format.");
+    }
+
+    if (!amount || isNaN(amount) || parseInt(amount) <= 0) {
+      return alert("Donation amount must be a positive number.");
+    }
+
+    if (!donorName) {
+      return alert("Please enter your name.");
+    }
+
+    try {
+      const res = await fetch("/api/payment/donate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ donorName, amount, message, phone }),
+      });
+
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else if (data.error) {
+        alert(data.error);
+      } else {
+        alert("Something went wrong.");
+      }
+    } catch (err) {
+      console.error("Donation error:", err);
+      alert("An error occurred while processing your donation.");
+    }
+  });
+</script>
+
+  
 
     <!-- Linking SwiperJS Script -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

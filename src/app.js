@@ -12,6 +12,7 @@ const cookieParser = require("cookie-parser");
 const app = express();
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../public"))); //using express to serve static files (html, css)
 //app.use(cors()); //enables communication between diff ports
 app.use(cookieParser());

@@ -9,7 +9,6 @@ const documentsBasePath = path.join(
 );
 
 const ensureDirectoryExists = (dir) => {
-  console.log("hello");
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
   }

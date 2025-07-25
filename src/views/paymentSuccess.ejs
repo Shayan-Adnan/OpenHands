@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html land="en">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,15 +27,21 @@
 
   <body>
     <div class="container">
-      <div class="box">
-        <span class="title">Payment Successful</span>
-        <div class="successMark">
-          <i class="fa-regular fa-circle-check"></i>
+      <div class="box text-center">
+        <span class="title d-block">✅ Payment Successful</span>
+        <div class="successMark my-3">
+          <i class="fa-regular fa-circle-check fa-4x text-success"></i>
         </div>
-        <div class="backBtn">
-          <a href="/"> <button type="submit" class="GoBckBtn">Go to Homepage</button></a>
-            
-          </button>
+
+        <!-- ✅ Inject backend message here -->
+        <% if (typeof message !== 'undefined') { %>
+          <p class="alert alert-info"><%= message %></p>
+        <% } %>
+
+        <div class="backBtn mt-3">
+          <a href="/">
+            <button type="button" class="GoBckBtn btn btn-primary">Go to Homepage</button>
+          </a>
         </div>
       </div>
     </div>

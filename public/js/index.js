@@ -147,6 +147,19 @@ const createFundraiserItem = (fundraiser) => {
               <h2 class="card-title">
                 ${fundraiser.title}
               </h2>
+              <!-- verified button -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="shield">
+            <button id="open-modal-btn" class="shieldbutton" href="#">
+              <i class="fa-solid fa-shield"></i>Verified
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
               <button class="card-button material-symbols-outlined">
                 arrow_forward
               </button>
@@ -174,6 +187,19 @@ const createFundraiserGridItem = (fundraiser) => {
         "en-US"
       )} PKR</p>
       <h2 class="grid-title">${fundraiser.title}</h2>
+      <!-- verified button -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="shield">
+            <button id="open-modal-btn" class="shieldbutton" href="#">
+              <i class="fa-solid fa-shield"></i>Verified
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
       <button class="grid-button material-symbols-outlined">arrow_forward</button>
     </a>
   `;
