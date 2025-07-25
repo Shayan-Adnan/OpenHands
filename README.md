@@ -183,11 +183,3 @@ The SMS is sent using **Twilio’s Node.js SDK**.
   ![Admin Dashboard](./screenshots/admin-dashboard.png)
 
 ---
-
-## 👥 Contributors
-
-- Muhammad Maaz Khan
-- Shayan Adnan Hasan
-- Mahnoor Arshad
-- Farrukh Iqbal
-- Syed Minhal Ali
