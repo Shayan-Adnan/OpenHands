@@ -43,7 +43,7 @@ Users can create fundraisers, donate securely, and receive real-time updates.
 git clone https://github.com/Maazk111/OpenHands.git
 cd OpenHands
 
-2. Install Dependencies**
+2. Install Dependencies
 
 cd OpenHands
 npm install
@@ -183,3 +183,11 @@ The SMS is sent using **Twilio’s Node.js SDK**.
   ![Admin Dashboard](./screenshots/admin-dashboard.png)
 
 ---
+
+## 👥 Contributors
+
+- Muhammad Maaz Khan
+- Shayan Adnan Hasan
+- Mahnoor Arshad
+- Farrukh Iqbal
+- Syed Minhal Ali
