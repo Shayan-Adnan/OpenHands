@@ -1,56 +1,89 @@
-OpenHands is a fundraiser platform inspired by GoFundMe, built using Node, Express, MySQL, and Bootstrap.
+# 👐 OpenHands – Fundraiser Platform
 
-![screenshot1](https://github.com/user-attachments/assets/72a3f3a5-fe2b-4a76-8a80-d6db316db391)
+OpenHands is a modern, full-stack **fundraising platform** inspired by GoFundMe, built using **Node.js**, **Express**, **Prisma (MySQL)**, **Stripe**, and **Twilio**.  
+Users can create fundraisers, donate securely, and receive real-time updates.
+
+---
 
 ## 🚀 Features
-- User authentication (JWT-based)
-- Fundraiser creation and approval system
-- Payment processing via Stripe
-- Email notifications for account-related actions
 
-## 📥 Installation & Setup
+- 🔐 JWT-based User Authentication
+- 💰 Secure Payments via **Stripe**
+- 📲 SMS Notifications via **Twilio**
+- 📬 Email Notifications via **Nodemailer**
+- 📝 Fundraiser Submission & Admin Approval
+- 📊 Admin Dashboard with Campaign Management
+- 🖼️ Dynamic Campaign Pages
+- ✅ Backend Validation
+- 🌐 Mobile-Friendly UI (Bootstrap)
 
-**1. Clone the Repository**
+---
+
+## 🛠️ Technologies Used
+
+| Tech              | Purpose                   |
+| ----------------- | ------------------------- |
+| Node.js / Express | Backend Server (API)      |
+| Prisma ORM        | Database & Migrations     |
+| MySQL             | Relational DB             |
+| Stripe            | Donation Payments         |
+| Twilio            | SMS Notifications         |
+| Nodemailer        | Email Services            |
+| Bootstrap         | UI/UX Styling             |
+| EJS               | Template Rendering Engine |
+| Dotenv            | Environment Configuration |
+
+---
+
+## 📦 Installation & Setup
+
+### 1. Clone the Repository
+
 ```bash
-git clone https://github.com/Shayan-Adnan/OpenHands.git
-```
+git clone https://github.com/Maazk111/OpenHands.git
+cd OpenHands
 
-**2. Install Dependencies**
-```bash
+2. Install Dependencies**
+
 cd OpenHands
 npm install
 ```
 
 **3. Set Up Environment Variables**
 Create a .env file in the root of the project and add these variables:
+
 ```bash
-SERVER_URL=your-server-url
-DATABASE_URL=your-database-url
-JWT_SECRET=your-jwt-secret
-PORT=your-port-number
-MAIL_USER=your-email-address
-APP_PASSWORD=your-email-password
-STRIPE_PRIVATE_KEY=your-stripe-private-key
+SERVER_URL=http://localhost:3000
+DATABASE_URL=your-mysql-url
+JWT_SECRET=your-secret-key
+PORT=3000
+
+# Stripe
+STRIPE_PRIVATE_KEY=your-stripe-secret
+
+# Nodemailer
+MAIL_USER=your-email@gmail.com
+APP_PASSWORD=your-email-app-password
+
+# Twilio
+TWILIO_ACCOUNT_SID=your-twilio-sid
+TWILIO_AUTH_TOKEN=your-twilio-auth-token
+TWILIO_PHONE=+1234567890
+
 ```
-
-🌱 **Environment Variable Breakdown:**
-
-- **SERVER_URL**: *Your server’s base URL (e.g., http://localhost).* 
-- **DATABASE_URL**: *MySQL database connection string.*
-- **JWT_SECRET**: *Secret key for JWT authentication.*
-- **PORT**: *Port for the server (e.g., 3000).*
-- **MAIL_USER & APP_PASSWORD**: *Email credentials for sending mail.*
-- **STRIPE_PRIVATE_KEY**: *Your Stripe private API key.*
 
 **4. Run Prisma Migration**
 
 Run the Prisma migration to set up the database schemas:
+
 ```bash
 npx prisma migrate dev
 ```
+
 **5. Manually Create An Admin Account In The Database**
 
 To approve/reject fundraiser requests, you need to create an admin account. Run the following query to create a sample account:
+
 ```bash
 INSERT INTO admin (
   id,
@@ -61,54 +94,92 @@ INSERT INTO admin (
   email,
   password,
   username
-) 
+)
 VALUES (
-  '84765c2b-5d91-4901-9869-3a66e345b26f', 
-  'John', 
-  'Doe', 
-  'Pakistan', 
-  'Karachi', 
-  'john@gmail.com', 
-  '$2b$10$p9rfuCY/jXgl321mZvRj0ONxdN8Muq.L0wKMDiQUXohJ3bGRhezC2', 
+  '84765c2b-5d91-4901-9869-3a66e345b26f',
+  'John',
+  'Doe',
+  'Pakistan',
+  'Karachi',
+  'john@gmail.com',
+  '$2b$10$p9rfuCY/jXgl321mZvRj0ONxdN8Muq.L0wKMDiQUXohJ3bGRhezC2',
   'JohnDoe'
 );
 ```
-*The password for this account will be '1234'.*
+
+_The password for this account will be '1234'._
 
 **6. Run The App**
 
 Enter the following command in your terminal to run the app:
+
 ```bash
-npm run devStart
+npm run dev
 ```
+
 Now you can open your browser and go to http://localhost:PORT to see the app in action 😃.
 
-## 📷 Screenshots
+# 📲 Twilio SMS Integration (After Donation)
 
-**Login Page**
+After a successful Stripe payment, a confirmation SMS is automatically sent to the donor’s mobile number.
 
-![image](https://github.com/user-attachments/assets/dc571b5f-60cb-43e4-993a-845661dd8d63)
+This feature is implemented in the `/donate/success` route or via webhook logic.
 
-**Landing Page**
+The SMS is sent using **Twilio’s Node.js SDK**.
 
-![screenshot1](https://github.com/user-attachments/assets/72a3f3a5-fe2b-4a76-8a80-d6db316db391)
+⚠️ **Note:** This feature works for verified numbers only while in Twilio trial mode.
 
-![image](https://github.com/user-attachments/assets/848c5b07-2e24-41b7-bfe0-f637d24cd07a)
+---
 
-**Create Fundraiser Page**
+## ✅ Donation Flow Overview
 
-![image](https://github.com/user-attachments/assets/6ec3637a-347b-48d4-8a5f-02c42a5fc898)
+1. Donor completes a Stripe payment.
+2. Backend receives payment success via redirect or webhook.
+3. A confirmation SMS is triggered using Twilio.
 
-**Fundraiser Page**
+---
 
-![image](https://github.com/user-attachments/assets/33526d64-eefb-45f3-b101-d8cef0e95ea4)
+## 📤 SMS Confirmation Screenshots
 
-**Stripe Payment Page**
+- **Donation Page**
 
-![image](https://github.com/user-attachments/assets/f01c980a-757f-4226-b290-7d0c8b6b5c32)
+  ![Donation Page](./screenshots/donation-page.png)
 
-**Admin Dashboard**
+- **Message Sent (Backend Status)**
 
-![image](https://github.com/user-attachments/assets/161afbd4-b300-4ad8-ab07-33e7ecb29311)
+  ![Message Sent](./screenshots/sms-message-sent.jpg)
 
+- **SMS Confirmation (Received on Phone)**
 
+  ![SMS Confirmation](./screenshots/sms-confirmation.png)
+
+---
+
+## 📷 UI Screenshots
+
+- **Login Page**
+
+  ![Login Page](./screenshots/login-page.png)
+
+- **Landing Page**
+
+  ![Landing Page 1](./screenshots/landing-page-1.png)  
+  ![Landing Page 2](./screenshots/landing-page-2.png)
+
+- **Create Fundraiser Page**
+
+  ![Create Fundraiser Page](./screenshots/create-fundraiser-page.png)
+
+- **Fundraiser Page**
+
+  ![Fundraiser Page](./screenshots/fundraiser-page.png)
+
+- **Stripe Payment Page**
+
+  ![Stripe Payment Page](./screenshots/stripe-payment-page.png)
+
+- **Admin Dashboard**
+
+  ![Admin Dashboard](./screenshots/admin-dashboard.png)
+
+---
